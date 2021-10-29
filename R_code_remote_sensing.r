@@ -6,3 +6,5 @@
 install.packages("raster")
 
 library(raster)
+
+setwd("C:/lab/"C:/Users/Emma/Desktop)  
