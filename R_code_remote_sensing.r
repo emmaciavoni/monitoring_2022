@@ -8,3 +8,6 @@ install.packages("raster")
 library(raster)
 
 setwd("C:/lab/"C:/Users/Emma/Desktop)  
+
+# we are going to import satellite data 
+brick(
