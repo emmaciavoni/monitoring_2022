@@ -35,7 +35,7 @@ plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")
 # B4 is the reflectance in the NIR band
 # NIR means near infra-red
 
-#sre means specrtum reflectance
+#sre means spectrum reflectance
 # let's plot the green band
 # plot is the function 
 # l2011$B2_sre is the argument
