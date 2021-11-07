@@ -12,6 +12,8 @@ setwd("C:/Users/Emma/Desktop/lab/")
 # we are going to import satellite data 
 l2011 <- brick("p224r63_2011.grd") 
 # objects cannot be numbers
+# l2011 is our satellite image
+# landsat has seven layers
 
 
 l2011
@@ -26,3 +28,48 @@ plot(l2011, col=cl)
 
 
 plotRGB(l2011, r=3, g=2, b=1, stretch="Lin") 
+
+# B1 is the reflectance in the blue band 
+# B2 is the reftlectance in the green band
+# B3 is the reflectance in the red band
+# B4 is the reflectance in the NIR band
+# NIR means near infra-red
+
+#sre means specrtum reflectance
+# let's plot the green band
+# plot is the function 
+# l2011$B2_sre is the argument
+plot(l2011$B2_sre)
+
+cl <- colorRampPalette(c("black", "grey", "light grey"))(100)
+plot(l2011$B2_sre, col=cl)
+
+# let's change the colorRampPalette with dark green, green and light green e.g. clg
+
+clg <- colorRampPalette(c("dark green", "green", "light green"))(100)
+plot(l2011$B2_sre, col=clg)
+
+# let's do the same with the blue band using dark blue, blue and light blue
+# we have to plot B1, instead of B2
+# B1_sre
+
+clb <- colorRampPalette(c("dark blue", "blue", "light blue"))(100)
+plot(l2011$B1_sre, col=clb)
+
+
+# plot both images in just one multiframe graph
+# one row and two columns
+# number of rows on the left 
+# number of columns on the right
+
+par(mfrow=c(1,2))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
+
+# plot both images in two rows and just one column
+
+par(mfrow=c(2,1))
+plot(l2011$B1_sre, col=clb)
+plot(l2011$B2_sre, col=clg)
+
+
