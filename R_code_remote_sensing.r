@@ -109,3 +109,28 @@ plotRGB(l2011, r=3, g=2, b=1, stretch="Lin") # natural colors
 plotRGB(l2011, r=4, g=3, b=2, stretch="Lin") # false colors
 plotRGB(l2011, r=3, g=4, b=2, stretch="Lin") # false colors
 plotRGB(l2011, r=3, g=2, b=4, stretch="Lin") # false colors
+
+
+# final day on this tropical forest reserve
+ 
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin") # false colors
+
+# histogram stretching will show the differences
+plotRGB(l2011, r=4, g=3, b=2, stretch="Hist")
+
+# importing past data through the "brick" function like we did for the other file
+l1988 <- brick("p224r63_1988.grd")
+
+l1988
+
+# we can plot the two images through "par" function
+par(mfrow=c(2,1))
+plotRGB(l1988, r= 4, g= 3, b=2, stretch="Lin") 
+# the forest in 1988 was there and they started to build small agricultural areas
+plotRGB(l2011, r= 4, g= 3, b=2, stretch="Lin") 
+# we can see, in 2011, a complete opening of the forest dedicated to agriculture
+
+# Put the NIR in the blue channel 
+par(mfrow=c(2,1))
+plotRGB(l1988, r= 2, g= 3, b=4, stretch="Lin")
+plotRGB(l2011, r= 2, g= 3, b=4, stretch="Lin") 
