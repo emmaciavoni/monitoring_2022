@@ -124,6 +124,7 @@ l1988 <- brick("p224r63_1988.grd")
 l1988
 
 # we can plot the two images through "par" function
+# two rows and one column
 par(mfrow=c(2,1))
 plotRGB(l1988, r= 4, g= 3, b=2, stretch="Lin") 
 # the forest in 1988 was there and they started to build small agricultural areas
