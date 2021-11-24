@@ -92,3 +92,19 @@ plot(dvi1992, col=cl)
 plot(dvi2006, col=cl)
 plot(dvidif, col=cld)
 dev.off() 
+
+
+# day 3
+# installing new packages 
+
+# for new graphical properties
+install.packages("ggplot2")
+
+# for new multiframe properties
+install.packages("gridExtra") 
+
+# for managing Copernicus data
+install.packages("ncdf4") 
+
+# https://cran.r-project.org/web/packages/RStoolbox/index.html
+install.packages("RStoolbox")
