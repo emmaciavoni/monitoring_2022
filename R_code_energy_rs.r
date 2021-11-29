@@ -182,4 +182,8 @@ plot(en$EN_0001, col=cl)
 # plot RGB 
 plotRGB(en, r=1, g=7, b=13, stretch="Lin") 
 
+
+# day 4 29/11/21
+
 # pairs 
+
