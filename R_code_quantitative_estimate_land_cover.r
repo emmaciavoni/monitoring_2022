@@ -53,6 +53,8 @@ propforest <- 305923/total
 # agriculture and water = 0.1036327 ~ 0.10
 # forests = 0.8963673 ~ 0,90 
 
+
+
 # build a dataframe
 cover <- c("Forest", "Agriculture") 
 prop1992 <- c(0.8963673, 0.1036327)
@@ -61,3 +63,46 @@ proportion1992 <- data.frame(cover, prop1992)
 library(ggplot2)
 
 ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+
+
+# day 2
+# recap of day 1
+# set the library and working directory
+# let's apply the functions again 
+
+
+rlist <- list.files(pattern="defor")
+rlist
+
+list_rast <- lapply(rlist, brick)
+list_rast
+
+# plot the images 
+# use of unsuperClass function 
+
+
+# classification of 2006
+# unsuperClass function 
+l2006c <- unsuperClass(l2006, nClasses=2) 
+l2006c
+
+plot(l2006c$map)
+# forest value 1
+# agricultural areas value 2
+
+freq(l1992c$map)
+
+total <- 342726
+propagri <- 35369/total
+propforest <- 305923/total
+
+cover <- c("Forest", "Agriculture")
+prop2006 <- c( 0.8926168, 0.1031991)
+proportion2006 <- data.frame(cover, prop2006)
+
+proportion <- data.frame(cover, prop1992, prop2006)
+
+ggplot(proportion2006, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+
+p1 <- ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
