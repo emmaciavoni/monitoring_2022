@@ -90,14 +90,19 @@ plot(l2006c$map)
 # forest value 1
 # agricultural areas value 2
 
-freq(l1992c$map)
+freq(l2006c$map)
 
 total <- 342726
-propagri <- 35369/total
-propforest <- 305923/total
+propforest2006 <- 178620/total
+propagri2006 <- 164106/total
+
+# propforest 0.5211743
+# propagri 0.4788257
 
 cover <- c("Forest", "Agriculture")
-prop2006 <- c( 0.8926168, 0.1031991)
+prop1992 <- c(propforest, propagri)
+prop2006 <- c(propforest2006, propagri2006)
+
 proportion2006 <- data.frame(cover, prop2006)
 
 proportion <- data.frame(cover, prop1992, prop2006)
