@@ -92,6 +92,8 @@ plot(l2006c$map)
 
 freq(l2006c$map)
 
+# proportions
+
 total <- 342726
 propforest2006 <- 178620/total
 propagri2006 <- 164106/total
@@ -109,5 +111,21 @@ proportion <- data.frame(cover, prop1992, prop2006)
 
 ggplot(proportion2006, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
-p1 <- ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+# plotting altogether 
+
+p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
 p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+
+
+library(gridExtra) 
+# miscellaneous functions for "grid" graphics
+# this package can be used for multiframe plot, instead of the "par" function
+
+# grid.arrange function puts several graphs in the same multiframe
+grid.arrange(p1, p2, nrow=1)
+
+# we expect that the agriculture data will rise up, while the forest data will go down
+
+# installing another package
+install.packages("patchwork")
+library(patchwork)
