@@ -129,3 +129,30 @@ grid.arrange(p1, p2, nrow=1)
 # installing another package
 install.packages("patchwork")
 library(patchwork)
+# it makes it simple to combine separate ggplots into the same graphic
+# it tries to solve the same problem as gridExtra::grid.arrange()
+p1+p2 # use this to put them in rows
+p1/p2 # use this to put them in columns 
+
+# patchwork works even with raster program
+# instead of using plotRGB, we are using ggRGB
+plotRGB(list_rast[[1]], r=1, g=2, b=3, stretch="Lin")
+
+ggRGB(l1992, r=1, g=2, b=3)
+ggRGB(l1992, r=1, g=2, b=3, stretch="Lin")
+ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+# we assign the functions to an object and plot them with patchwork
+gp1 <- ggRGB(l1992, r=1, g=2, b=3, stretch="Lin")
+gp2 <- ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+gp3 <- ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+gp4 <- ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+gp1+gp2+gp3+gp4
+
+gp1 <- ggRGB(l1992, r=1, g=2, b=3)
+gp5 <- ggRGB(l2006, r=1, g=2, b=3)
+
+gp1+gp5
