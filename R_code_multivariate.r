@@ -32,8 +32,4 @@ ordiellipse(multivar, type, col=c("black","red","green","blue"), kind="ehull", l
 # ordispider function 
 ordispider(multivar, type, col=c("black","red","green","blue"), label=T)
 
-install.packages("sdm")
-library(sdm)
-# sdm = species distribution modelling 
-# An extensible framework for developing species distribution models using individual and community-based approaches
-# generate ensembles of models, evaluate the models, and predict species potential distributions in space and time
+
