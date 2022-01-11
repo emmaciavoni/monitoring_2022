@@ -75,3 +75,25 @@ plot(preds$precipitation, col=cl)
 points(presences, pch=19)
 
 # model 
+
+
+
+
+#------- day 3
+# setting the working directory
+setwd("C:/Users/Emma/Desktop/lab/")
+source("R_code_source_sdm.r")
+
+preds
+# these are the predictors: elevation, temperature, precipitation, vegetation
+
+# sdmData function
+# creates a sdmdata objects that holds species (single or multiple) and explanatory variates
+# model
+# let's explain tot he model what are the training and predictors
+datasdm <- sdmData(train=species, predictors=preds)
+datasdm
+
+# this function includes the formula, the data and the methods
+m1 <- sdm(Occurrence~temperature+elevation+precipitation+vegetation, data=datasdm, methods="glm") 
+m1
