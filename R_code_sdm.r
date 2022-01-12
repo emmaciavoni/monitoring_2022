@@ -97,3 +97,22 @@ datasdm
 # this function includes the formula, the data and the methods
 m1 <- sdm(Occurrence~temperature+elevation+precipitation+vegetation, data=datasdm, methods="glm") 
 m1
+
+---------# day 4
+# recalling the source function
+
+# "predict" is a generic function for predictions from the results of various model fitting functions
+# prediction: map probability
+p1 <- predict(m1, newdata=preds)
+p1
+
+plot(p1, col=cl)
+points(presences, pch=19)
+
+# we are going to stack everything together
+s1 <- stack(preds, p1)
+plot(s1, col=cl)
+
+# assign names of s1 
+names(s1) <- c("evelation", "precipitation", "temperature", "vegetation", "model")
+plot(s1, col=cl)
