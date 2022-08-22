@@ -23,3 +23,7 @@ list_rast
 
 cl <- colorRampPalette (c('black','red','white'))(100)
 plot(fire20210831, col=cl)
+
+
+ggplot() +
+geom_raster(snow20211214, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent))
