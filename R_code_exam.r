@@ -26,4 +26,10 @@ plot(fire20210831, col=cl)
 
 
 ggplot() +
-geom_raster(snow20211214, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent))
+geom_raster(fire20210831, mapping = aes(x=x, y=y, fill=BA_DEKAD))
+
+
+ggplot() +
+geom_raster(fire20210831, mapping = aes(x=x, y=y, fill=BA_DEKAD)) +
+scale_fill_viridis(option="cividis") +
+ggtitle("cividis palette")
