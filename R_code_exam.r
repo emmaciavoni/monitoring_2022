@@ -4,3 +4,5 @@ library(raster)
 library(viridis)
 library(RStoolbox) 
 library(ggplot2)
+
+fire2022043 <- 
