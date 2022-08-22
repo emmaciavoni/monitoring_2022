@@ -7,3 +7,5 @@ library(ggplot2)
 
 fire2022043 <- raster("c_gls_BA300_202204300000_GLOBE_S3_V1.2.1.nc")
 fire2022043
+
+plot(fire2022043)
