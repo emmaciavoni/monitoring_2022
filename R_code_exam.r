@@ -12,3 +12,7 @@ plot(fire2022043)
 
 cl <- colorRampPalette (c('red','orange','yellow'))(100)
 plot(fire2022043, col=cl)
+
+
+rlist <- list.files (pattern="BA300")
+rlist
