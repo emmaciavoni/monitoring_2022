@@ -16,3 +16,7 @@ plot(fire2022043, col=cl)
 
 rlist <- list.files (pattern="BA300")
 rlist
+
+
+list_rast <- lapply(rlist, raster)
+list_rast
