@@ -1,5 +1,7 @@
 # Ice melt in Greenland
 # Proxy: LST
+# Proxy is a variable that substitutes another variable
+# the higher the temperature the higher the melting
 # LST means land surface temperature
 # setting the working directory
 setwd("C:/Users/Emma/Desktop/lab/greenland")
