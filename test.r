@@ -16,7 +16,7 @@ install.packages("sf")
 fire_archive <- st_read("fire_archive_M-C61_358736.shp")
 
 # it doesn't seem to work so I try with rgdal and ggplot2 libraries
-# and with the read0GR function
+# and with the readOGR function
 
 shp = readOGR(dsn = ".", layer = "fire_archive_M-C61_358736")
 
