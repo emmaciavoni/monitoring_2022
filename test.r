@@ -5,3 +5,5 @@ library(raster) # predictors
 library(rgdal) # species
 library(ggplot2) 
 
+file <- system.file("fire_archive_M-C61_358736.shp", package="rgdal")
+file
