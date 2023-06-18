@@ -7,3 +7,8 @@ library(ggplot2)
 
 file <- system.file("fire_archive_M-C61_358736.shp", package="rgdal")
 file
+fires <- shapefile(file) 
+fires
+# is the correspondant function of raster
+
+plot(species, pch=19, col="red")
