@@ -3,3 +3,4 @@
 setwd("C:/Users/Emma/Desktop/exam/")
 library(raster) # predictors
 library(rgdal) # species
+library(ggplot2) 
