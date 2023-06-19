@@ -35,3 +35,45 @@ my_df2 <- read.csv(file = my_csv_file, header = TRUE, sep = ";" stringsAsFactors
 head(my_df2)
 
 # ovviamente non funziona 
+
+# provo a prendere i dati da coprenicus che forse è l'unico sito affidabile che non ti dà i dati in formati strani
+# ho creato un nuovo folder quindi metto la nuova wd (sperando che funzioni,lol)
+
+setwd("C:/Users/Emma/Desktop/exam")
+
+# check the packages into R
+library(raster) # work with raster file
+library(ncdf4) # import the copernicus file in nc
+library(viridis) # for the color palette
+library(RStoolbox) # useful for remote sensing image processing
+library(ggplot2) # for graphics ggplot functions
+library(grid.Extra) # multiframe ggplot
+library(patchwork) # multiframe graphics
+
+
+############ analisi della fraction of vegetation cover ############
+# FCOVER = fraction of ground covered by green vegetation. Practically, it quantifies the spatial extent of the vegetation.
+# using copernicus data: FCOVER 300m V1 - Sentinel-3/OLCI, PROBA-V
+
+# cheching how the fcover changed from 2017 to 2019, so before the fires and after the fires
+
+# ho cambiato zona perché su Copernicus non c'erano dati prima del 2020
+# quindi sto analizzando gli incendi del Canada di quest'anno 
+# prima però ho scaricato i dati della FCOVER nel giugno 2022
+# provo ad importarlo su R 
+# pray for me 
+
+june2022 <- raster ("c_gls_FCOVER300-RT1_202206100000_GLOBE_OLCI_V1.1.2.nc") 
+
+# vediamo com'è l'immagine importata su R facendo un plot
+plot(june2022) 
+dev.off()
+
+# ok, ha funzionato e vediamo il plot a livello globale
+# adesso mi serve vedere la situazione in Canada e devo usare la funzione "crop()"
+# ora il quesito è: mi conviene croppare tutto il Canada o solo la regione che mi interessa?
+# a questo quesito risponderò domani, che oggi è stata una giornata faticosa 
+
+
+
+
