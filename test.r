@@ -24,7 +24,7 @@ shp = readOGR(dsn = ".", layer = "fire_archive_M-C61_358736")
 # end of fucking day 1
 
 
------------ #day2 ------------------
+#############day2 ################
 # let's try again with baby steps
 # I have to analyze the vegetation density and extent so do a pre-fire mapping
 
