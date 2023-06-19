@@ -22,3 +22,16 @@ shp = readOGR(dsn = ".", layer = "fire_archive_M-C61_358736")
 
 # non funziona niente, ciao
 # end of fucking day 1
+
+
+----------- #day2 ------------------
+# let's try again with baby steps
+# I have to analyze the vegetation density and extent so do a pre-fire mapping
+
+# provo a importare dei dati in csv delle date degli incendi
+# csv 
+my_csv_file <-"fire_mapping.csv"
+my_df2 <- read.csv(file = my_csv_file, header = TRUE, sep = ";" stringsAsFactors = FALSE)
+head(my_df2)
+
+# ovviamente non funziona 
