@@ -112,14 +112,21 @@ dev.off()
 
 # provo comunque a caricare l'immagine, giusto per impostare la funzione
 # export in PNG format in the output folder
-png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm, width=20, height=
+png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm, width=20, height= 30, res=600) 
+par(mfrow = c(2,1)) # 2 rows, 1 column
+plot(fcover_bc2022, main = ("FCOVER in june 2022"))
+plot(fcover_bc2023, main = ("FCOVER in june 2023"))
+dev.off()
+# questo passaggio non mi è riuscito. ho salvato l'immagine dei plot "manualmente", ma dovrei farlo con la funzione png()
+# inoltre, qui mi dava errore per il plot del 2022, per simbolo in atteso
 
 
 
 
 
 # prima però uso il package viridis per cambiare i colori 
-# the Viridis package is colorblind firendly 
+# the Viridis package is colorblind firendly
+
 
 
 
