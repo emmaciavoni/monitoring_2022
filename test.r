@@ -78,4 +78,9 @@ dev.off()
 
 # scaricare FCOVER di giugno 2023 (01 - 11 giugno) 
 
+# ho scaricato questi due file da copernicus 
+# c_gls_FCOVER300-RT1_202206100000_GLOBE_OLCI_V1.1.2.nc june 2022
+# c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2 june 2023
+
+# ora devo capire come si croppano lol
 
