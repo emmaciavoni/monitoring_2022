@@ -24,7 +24,7 @@ shp = readOGR(dsn = ".", layer = "fire_archive_M-C61_358736")
 # end of fucking day 1
 
 
-#############day2 ################
+############# day2 ################
 # let's try again with baby steps
 # I have to analyze the vegetation density and extent so do a pre-fire mapping
 
@@ -59,7 +59,7 @@ library(patchwork) # multiframe graphics
 
 # ho cambiato zona perché su Copernicus non c'erano dati prima del 2020
 # quindi sto analizzando gli incendi del Canada di quest'anno 
-# prima però ho scaricato i dati della FCOVER nel giugno 2022
+# prima però ho scaricato i dati della FCOVER nel giugno 2022 (01 - 11 giugno)
 # provo ad importarlo su R 
 # pray for me 
 
@@ -74,6 +74,8 @@ dev.off()
 # ora il quesito è: mi conviene croppare tutto il Canada o solo la regione che mi interessa?
 # a questo quesito risponderò domani, che oggi è stata una giornata faticosa 
 
+###### day 3 #######
 
+# scaricare FCOVER di giugno 2023 (01 - 11 giugno) 
 
 
