@@ -112,3 +112,8 @@ dev.off()
 
 # provo comunque a caricare l'immagine, giusto per impostare la funzione
 
+# prima però uso il package viridis per cambiare i colori 
+# the Viridis package is colorblind firendly 
+
+
+
