@@ -111,6 +111,12 @@ dev.off()
 # devo verificare se ho sbagliato qualcosa nelle coordinate 
 
 # provo comunque a caricare l'immagine, giusto per impostare la funzione
+# export in PNG format in the output folder
+png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm, width=20, height=
+
+
+
+
 
 # prima però uso il package viridis per cambiare i colori 
 # the Viridis package is colorblind firendly 
