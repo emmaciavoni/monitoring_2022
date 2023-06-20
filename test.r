@@ -84,7 +84,7 @@ dev.off()
 
 june2023 <- raster ("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc")
 
-# I use the crop () function to crop the extension of Canada because I want to analyze the region of British Columbia
+# I use the crop () function to crop the extension of Canada because I want to analyze the region of British Columbia since it was one of the most affected areas
 # longitude from 125 to 129
 # latitude from 51 to 55
 
@@ -98,3 +98,17 @@ plot(fcover_bc2023)
 
 # hanno funzionato ma non so bene come interpetarle 
 # sicuramente nel 2022 c'era più verde, nel 2023 mancano dei pezzi. Detta proprio in gergo 
+
+# I want to plot the two maps  together 
+# I use the par() function 
+
+par(mfrow = c(2,1)) # 2 rows, 1 column
+plot(fcover_bc2022, main = ("FCOVER in june 2022"))
+plot(fcover_bc2023, main = ("FCOVER in june 2023"))
+dev.off()
+
+# si vedono ma male, è un formato strano
+# devo verificare se ho sbagliato qualcosa nelle coordinate 
+
+# provo comunque a caricare l'immagine, giusto per impostare la funzione
+
