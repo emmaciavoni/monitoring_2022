@@ -80,7 +80,21 @@ dev.off()
 
 # ho scaricato questi due file da copernicus 
 # c_gls_FCOVER300-RT1_202206100000_GLOBE_OLCI_V1.1.2.nc june 2022
-# c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2 june 2023
+# c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc june 2023
 
-# ora devo capire come si croppano lol
+june2023 <- raster ("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc")
 
+# I use the crop () function to crop the extension of Canada because I want to analyze the region of British Columbia
+# longitude from 125 to 129
+# latitude from 51 to 55
+
+extBC <- c(125, 129, 51, 55) 
+fcover_bc2022 <- crop(june2022, extBC)
+plot(fcover_bc2022)
+
+extBC <- c(125, 129, 51, 55)
+fcover_bc2023 <- crop(june2023, extBC)
+plot(fcover_bc2023)
+
+# hanno funzionato ma non so bene come interpetarle 
+# sicuramente nel 2022 c'era più verde, nel 2023 mancano dei pezzi. Detta proprio in gergo 
