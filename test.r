@@ -85,7 +85,7 @@ dev.off()
 june2023 <- raster ("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc")
 
 # I use the crop () function to crop the extension of Canada because I want to analyze the region of British Columbia since it was one of the most affected areas
-# longitude from 125 to 129
+# longitude from 120 to 130
 # latitude from 51 to 55
 
 extBC <- c(125, 129, 51, 55) 
@@ -102,7 +102,7 @@ plot(fcover_bc2023)
 # I want to plot the two maps  together 
 # I use the par() function 
 
-par(mfrow = c(2,1)) # 2 rows, 1 column
+par(mfrow = c(1,2)) # 2 rows, 1 column
 plot(fcover_bc2022, main = ("FCOVER in june 2022"))
 plot(fcover_bc2023, main = ("FCOVER in june 2023"))
 dev.off()
@@ -128,5 +128,8 @@ dev.off()
 # the Viridis package is colorblind firendly
 
 
-
+### oggi è stata una giornata complicata e mi sono bloccata
+### devo capire cosa mi conviene fare e partire da lì 
+### l'ultima idea è la seguente: prendere i dati del mese di giugno negli ultimi 9 anni (2014-2023) e valutare la fcover e l'ndvi
+### domani comincio con il prendere i dati del fcover e vediamo come va
 
