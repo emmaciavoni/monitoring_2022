@@ -141,9 +141,20 @@ library(patchwork) # multiframe graphics
 
 # recalling the working directory
 
-setwd("C:/Users/Emma/Desktop/exam")
+"C:/Users/Emma/Desktop/exam"
 
 # uploading the images as a list on r through list and lapply functions 
+
+fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1")
+fcover15 <- raster
+fcover16 <- 
+fcover17 <-
+fcover18
+fcover19
+fcover20
+fcover21
+fcover22
+fcover23
 
 fcoverlist <- list.files (pattern = "FCOVER300") 
 fcoverlist 
