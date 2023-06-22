@@ -145,16 +145,16 @@ library(patchwork) # multiframe graphics
 
 # uploading the images as a list on r through list and lapply functions 
 
-fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1")
-fcover15 <- raster
-fcover16 <- 
-fcover17 <-
-fcover18
-fcover19
-fcover20
-fcover21
-fcover22
-fcover23
+fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover15 <- raster("c_gls_FCOVER300_201506100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover16 <- raster("c_gls_FCOVER300_201606100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover17 <- raster("c_gls_FCOVER300_201706100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover18 <- raster("c_gls_FCOVER300_201806100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover19 <- raster("c_gls_FCOVER300_201906100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover20 <- raster("c_gls_FCOVER300_202006100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover21 <- raster("c_gls_FCOVER300-RT0_202106200000_GLOBE_OLCI_V1.1.1.nc")
+fcover22 <- raster("c_gls_FCOVER300-RT0_202206200000_GLOBE_OLCI_V1.1.2.nc")
+fcover23 <- raster("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc")
 
 fcoverlist <- list.files (pattern = "FCOVER300") 
 fcoverlist 
