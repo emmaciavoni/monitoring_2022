@@ -39,17 +39,6 @@ head(my_df2)
 # provo a prendere i dati da coprenicus che forse è l'unico sito affidabile che non ti dà i dati in formati strani
 # ho creato un nuovo folder quindi metto la nuova wd (sperando che funzioni,lol)
 
-setwd("C:/Users/Emma/Desktop/exam")
-
-# check the packages into R
-library(raster) # work with raster file
-library(ncdf4) # import the copernicus file in nc
-library(viridis) # for the color palette
-library(RStoolbox) # useful for remote sensing image processing
-library(ggplot2) # for graphics ggplot functions
-library(grid.Extra) # multiframe ggplot
-library(patchwork) # multiframe graphics
-
 
 ############ analisi della fraction of vegetation cover ############
 # FCOVER = fraction of ground covered by green vegetation. Practically, it quantifies the spatial extent of the vegetation.
@@ -133,5 +122,29 @@ dev.off()
 ### l'ultima idea è la seguente: prendere i dati del mese di giugno negli ultimi 9 anni (2014-2023) e valutare la fcover e l'ndvi
 ### domani comincio con il prendere i dati del fcover e vediamo come va
 
+
+
+
+
+################# DATA DI OGGI 22/06/2023 ########################
 #### bonjour, comincio a prendere i dati della fcover dal 2014 al 2023 ####
 # https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
+
+# recalling the libraries into R 
+library(raster) # work with raster file
+library(ncdf4) # import the copernicus file in nc
+library(viridis) # for the color palette
+library(RStoolbox) # useful for remote sensing image processing
+library(ggplot2) # for graphics ggplot functions
+library(grid.Extra) # multiframe ggplot
+library(patchwork) # multiframe graphics
+
+# recalling the working directory
+
+setwd("C:/Users/Emma/Desktop/exam")
+
+# uploading the images as a list on r through list and lapply functions 
+
+fcoverlist <- list.files (pattern = "FCOVER300") 
+fcoverlist 
+# with this function I have uploaded 9 images of global fraction of ground covered by green vegetation from 2014 to 2023
