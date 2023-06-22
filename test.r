@@ -147,6 +147,9 @@ setwd("C:/Users/Emma/Desktop/exam")
 
 fcoverlist <- list.files (pattern = "FCOVER300") 
 fcoverlist 
-# with this function I have uploaded 9 images of global fraction of ground covered by green vegetation from 2014 to 2023
+# with this function I have uploaded 10 images of global fraction of ground covered by green vegetation from 2014 to 2023
+
+# I create a stack 
+fcover_stack <- stack (fcover_rast)
 
 # since the western part of Canada seems to be the most affected by the 2023 fires, I crop the area to see how the situation changed throughout the years in the province of BC
