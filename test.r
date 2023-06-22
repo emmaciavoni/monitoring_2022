@@ -154,7 +154,7 @@ fcover_rast <- lapply (fcoverlist, raster)
 fcover_rast
 
 # stack function
-fcover_stack <- stack(fcover_rast)
-fcover_stack
+fcoverstack <- stack(fcover_rast)
+fcoverstack
 
 # since the western part of Canada seems to be the most affected by the 2023 fires, I crop the area to see how the situation changed throughout the years in the province of BC
