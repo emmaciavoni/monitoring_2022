@@ -141,7 +141,7 @@ library(patchwork) # multiframe graphics
 
 # recalling the working directory
 
-"C:/Users/Emma/Desktop/exam"
+setwd("C:/Users/Emma/Desktop/exam")
 
 # uploading the images as a list on r through list and lapply functions 
 
@@ -154,8 +154,19 @@ fcover19 <- raster("c_gls_FCOVER300_201906100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover20 <- raster("c_gls_FCOVER300_202006100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover21 <- raster("c_gls_FCOVER300-RT0_202106200000_GLOBE_OLCI_V1.1.1.nc")
 fcover22 <- raster("c_gls_FCOVER300-RT0_202206200000_GLOBE_OLCI_V1.1.2.nc")
-fcover23 <- raster("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2.nc")
+fcover23 <- raster("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2 (1).nc")
 
+par(mfrow=c(4,4)
+plot(fcover14, col=cl)
+plot(fcover15, col=cl)
+plot(fcover16, col=cl)
+plot(fcover17, col=cl)
+plot(fcover18, col=cl)
+plot(fcover19, col=cl)
+plot(fcover20, col=cl)
+plot(fcover21, col=cl)
+plot(fcover22, col=cl)
+plot(fcover23, col=cl)
 fcoverlist <- list.files (pattern = "FCOVER300") 
 fcoverlist 
 # with this function I have uploaded 10 images of global fraction of ground covered by green vegetation from 2014 to 2023
