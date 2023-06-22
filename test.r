@@ -133,3 +133,5 @@ dev.off()
 ### l'ultima idea è la seguente: prendere i dati del mese di giugno negli ultimi 9 anni (2014-2023) e valutare la fcover e l'ndvi
 ### domani comincio con il prendere i dati del fcover e vediamo come va
 
+#### bonjour, comincio a prendere i dati della fcover dal 2014 al 2023 ####
+# https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
