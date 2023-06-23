@@ -213,3 +213,10 @@ fcover_stack
     print('Missing')
   }
 }
+
+
+fcover <- raster(“c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif”)
+
+fcover <- raster ("c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif")
+fcover_names <- "c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif"
+imported_raster=raster(fcover_names)
