@@ -156,7 +156,7 @@ fcover21 <- raster("c_gls_FCOVER300-RT0_202106200000_GLOBE_OLCI_V1.1.1.nc")
 fcover22 <- raster("c_gls_FCOVER300-RT0_202206200000_GLOBE_OLCI_V1.1.2.nc")
 fcover23 <- raster("c_gls_FCOVER300-RT0_202306100000_GLOBE_OLCI_V1.1.2 (1).nc")
 
-par(mfrow=c(4,4)) # 5 rows, 2 columns
+par(mfrow=c(5,2)) # 5 rows, 2 columns
 plot(fcover14)
 plot(fcover15)
 plot(fcover16)
