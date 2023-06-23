@@ -169,7 +169,7 @@ plot(fcover22)
 plot(fcover23)
 
 
-fcoverlist <- list.files (pattern = "FCOVER300") 
+fcoverlist <- list.files (pattern = "FCOVER300-RT0") 
 fcoverlist 
 # with this function I have uploaded 10 images of global fraction of ground covered by green vegetation from 2014 to 2023
 
@@ -178,8 +178,8 @@ fcover_rast <- lapply (fcoverlist, raster)
 fcover_rast
 
 # stack function
-fcoverstack <- stack(fcover_rast)
-fcoverstack
+fcover_stack <- stack(fcover_rast)
+fcover_stack
 
 # since the western part of Canada seems to be the most affected by the 2023 fires, I crop the area to see how the situation changed throughout the years in the province of BC
 
