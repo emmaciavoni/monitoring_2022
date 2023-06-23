@@ -177,6 +177,10 @@ fcoverlist
 fcover_rast <- lapply (fcoverlist, raster)
 fcover_rast
 
+fcover_stack <- stack(fcover_rast)
+fcover_stack
+
+
 # stack function
 fcover_stack <- stack(fcover_rast)
 fcover_stack
