@@ -44,7 +44,7 @@ head(my_df2)
 # FCOVER = fraction of ground covered by green vegetation. Practically, it quantifies the spatial extent of the vegetation.
 # using copernicus data: FCOVER 300m V1 - Sentinel-3/OLCI, PROBA-V
 
-# cheching how the fcover changed from 2017 to 2019, so before the fires and after the fires
+# checkng how the fcover changed from 2017 to 2019, so before the fires and after the fires
 
 # ho cambiato zona perché su Copernicus non c'erano dati prima del 2020
 # quindi sto analizzando gli incendi del Canada di quest'anno 
@@ -91,7 +91,7 @@ plot(fcover_bc2023)
 # I want to plot the two maps  together 
 # I use the par() function 
 
-par(mfrow = c(1,2)) # 2 rows, 1 column
+par(mfrow = c(1,2)) # 1 row, 2 columns
 plot(fcover_bc2022, main = ("FCOVER in june 2022"))
 plot(fcover_bc2023, main = ("FCOVER in june 2023"))
 dev.off()
