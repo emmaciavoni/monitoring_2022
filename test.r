@@ -207,3 +207,9 @@ fcover_stack
 
 # NON FUNZIONA CON LA FCOVER CREDO NON C'è ALTRA SOLUZIONE. è UN PROBLEMA DEL MIO SISTEMA PORCODIDDDDDDD 
 # CRISTO ME ODIA
+
+
+ if (is.na(fcover_rast)) {
+    print('Missing')
+  }
+}
