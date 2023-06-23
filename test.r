@@ -188,3 +188,22 @@ fcover_stack
 # since the western part of Canada seems to be the most affected by the 2023 fires, I crop the area to see how the situation changed throughout the years in the province of BC
 
 ## domani provo a fare lo stack solo degli ultimi tre file e vedo se funziona ##
+
+
+
+
+
+#### provo a fare una cosa visto che non funziona la stack function e mi voglio sparare ####
+setwd("C:/Users/Emma/Desktop/test")
+
+fcoverlist <- list.files (pattern = "FCOVER300")
+fcoverlist
+
+fcover_rast <- lapply (fcoverlist, raster) 
+fcover_rast
+
+fcover_stack <- stack(fcover_rast)
+fcover_stack
+
+# NON FUNZIONA CON LA FCOVER CREDO NON C'è ALTRA SOLUZIONE. è UN PROBLEMA DEL MIO SISTEMA PORCODIDDDDDDD 
+# CRISTO ME ODIA
