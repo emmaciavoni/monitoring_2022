@@ -169,7 +169,7 @@ plot(fcover22)
 plot(fcover23)
 
 
-fcoverlist <- list.files (pattern = "FCOVER300-RT0") 
+fcoverlist <- list.files (pattern = "FCOVER300") 
 fcoverlist 
 # with this function I have uploaded 10 images of global fraction of ground covered by green vegetation from 2014 to 2023
 
