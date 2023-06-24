@@ -134,12 +134,12 @@ dev.off()
 library(raster) # work with raster file
 library(ncdf4) # import the copernicus file in nc
 library(viridis) # for the color palette
-library(RStoolbox) # useful for remote sensing image processing
 library(ggplot2) # for graphics ggplot functions
-
 library(patchwork) # multiframe graphics
+library(gridExtra) # multiframe ggplot
 
-library(gridExtra) # multiframe ggplot, vedi per dopo
+
+library(RStoolbox) # useful for remote sensing image processing. Non lo scarica nella versione 4.3.1 di R
 
 # recalling the working directory
 
