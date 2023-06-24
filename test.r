@@ -136,8 +136,10 @@ library(ncdf4) # import the copernicus file in nc
 library(viridis) # for the color palette
 library(RStoolbox) # useful for remote sensing image processing
 library(ggplot2) # for graphics ggplot functions
-library(grid.Extra) # multiframe ggplot
+
 library(patchwork) # multiframe graphics
+
+library(grid.Extra) # multiframe ggplot, vedi per dopo
 
 # recalling the working directory
 
