@@ -108,8 +108,7 @@ plot(fcover_bc2023, main = ("FCOVER in june 2023"))
 dev.off()
 # questo passaggio non mi è riuscito. ho salvato l'immagine dei plot "manualmente", ma dovrei farlo con la funzione png()
 # inoltre, qui mi dava errore per il plot del 2022, per simbolo in atteso
-
-
+# ho risolto l'errore: su R non avevo chiuso le virgolette su "cm"
 
 
 
@@ -207,15 +206,10 @@ fcover_rast
 fcover_stack <- stack(fcover_rast)
 fcover_stack
 
-# NON FUNZIONA CON LA FCOVER CREDO NON C'è ALTRA SOLUZIONE. è UN PROBLEMA DEL MIO SISTEMA PORCODIDDDDDDD 
-# CRISTO ME ODIA
+# non funziona
 
 
- if (is.na(fcover_rast)) {
-    print('Missing')
-  }
-}
-
+# tentativo con immagini in formato .tif
 
 fcover <- raster(“c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif”)
 
@@ -225,8 +219,7 @@ imported_raster=raster(fcover_names)
 
 
 
-
-
+# scarico solo 5 file per provare a vedere se è un problema di download, visto che la prima volta il computer si era impallato
 
 fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover15 <- raster("c_gls_FCOVER300_201506100000_GLOBE_PROBAV_V1.0.1.nc")
@@ -234,7 +227,7 @@ fcover16 <- raster("c_gls_FCOVER300_201606100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover17 <- raster("c_gls_FCOVER300_201705310000_GLOBE_PROBAV_V1.0.1.nc")
 fcover18 <- raster("c_gls_FCOVER300_201805310000_GLOBE_PROBAV_V1.0.1.nc")
 
-# provo a croppare il canada 
+# provo a ritagliare il canada per tre file #fcover14, #fcover15, #fcover16
 
 extcan <- c(100, 110, 50, 60)
 fcover_can14 <- crop(fcover14, extcan)
@@ -284,3 +277,14 @@ png(file="outputs/FCOVER_CAN_14-25-16.png", units="cm", width=25, height=30, res
 p1 / p2 / p3
 dev.off()
 
+
+
+## ho dovuto installare la versione più recente di R (4.3.1): con questa la funzione stack() non mi dà più errore, ma non è disponibile il pacchetto RStoolbox
+# senza RStoolbox non si vedevano i ggplot con dati raster
+# ho cercato come installarlo in maniera alternativa (non da CRAN, visto che è stato tolto)
+# ho trovato la soluzione qui: https://www.rdocumentation.org/packages/RStoolbox/versions/0.3.0 # rdocumentation
+install.packages(devtools)
+library(devtools)
+install_github("bleutner/RStoolbox")
+
+# installato senza errori e si vedono i plot!
