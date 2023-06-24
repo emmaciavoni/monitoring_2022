@@ -139,7 +139,7 @@ library(ggplot2) # for graphics ggplot functions
 
 library(patchwork) # multiframe graphics
 
-library(grid.Extra) # multiframe ggplot, vedi per dopo
+library(gridExtra) # multiframe ggplot, vedi per dopo
 
 # recalling the working directory
 
@@ -234,3 +234,12 @@ fcover16 <- raster("c_gls_FCOVER300_201606100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover17 <- raster("c_gls_FCOVER300_201705310000_GLOBE_PROBAV_V1.0.1.nc")
 fcover18 <- raster("c_gls_FCOVER300_201805310000_GLOBE_PROBAV_V1.0.1.nc")
 
+# provo a croppare il canada
+
+extcan <- c(100, 110, 50, 60)
+fcover_can14 <- crop(fcover14, extcan)
+plot(fcover_can14)
+
+extBC <- c(125, 129, 51, 55) 
+fcover_bc2022 <- crop(june2022, extBC)
+plot(fcover_bc2022)
