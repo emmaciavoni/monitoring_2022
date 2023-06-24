@@ -263,3 +263,20 @@ plot(fcover_can16, main = ("FCOVER in june 2016"))
 dev.off()
 
 
+p1 <- ggplot(data = oristano20) + 
+geom_raster (data = oristano20, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER summer 2020 ")
+
+# ggplot 2021 data, assign it to the object p2
+p2 <- ggplot(data = oristano21) + 
+geom_raster (data = oristano21, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER summer 2021")
+
+# plot the 2 maps together into 2 rows and 1 column using Patchwork
+p1/p2
+
+# export this image in PNG format in the output folder
+png(file="outputs/FCOVER_Oristano_20-21.png", units="cm", width=25, height=30, res=600)
+p1 / p2
+dev.off()
+
