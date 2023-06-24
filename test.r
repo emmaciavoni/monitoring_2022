@@ -101,7 +101,7 @@ dev.off()
 
 # provo comunque a caricare l'immagine, giusto per impostare la funzione
 # export in PNG format in the output folder
-png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm, width=20, height= 30, res=600) 
+png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm", width=20, height= 30, res=600) 
 par(mfrow = c(2,1)) # 2 rows, 1 column
 plot(fcover_bc2022, main = ("FCOVER in june 2022"))
 plot(fcover_bc2023, main = ("FCOVER in june 2023"))
@@ -254,10 +254,12 @@ plot(fcover_can15, main = ("FCOVER in june 2015"))
 plot(fcover_can16, main = ("FCOVER in june 2016"))
 dev.off()
 
-png(file="outputs/FCOVER_CAN_14-15-16_plot.png", units="cm, width=20, height= 30, res=600) 
-par(mfrow = c(1,3)) 
+# salvo il plot nella cartella outputs
+png(file="outputs/FCOVER_CAN_plot.png", units="cm", width=20, height= 30, res=600) 
+par(mfrow = c(1,3))
 plot(fcover_can14, main = ("FCOVER in june 2014"))
 plot(fcover_can15, main = ("FCOVER in june 2015"))
 plot(fcover_can16, main = ("FCOVER in june 2016"))
 dev.off()
+
 
