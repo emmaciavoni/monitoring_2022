@@ -222,3 +222,15 @@ fcover <- raster(“c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif”
 fcover <- raster ("c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif")
 fcover_names <- "c_gls_FCOVER300-RT0_QL_202304300000_GLOBE_OLCI_V1.1.2.tif"
 imported_raster=raster(fcover_names)
+
+
+
+
+
+
+fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover15 <- raster("c_gls_FCOVER300_201506100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover16 <- raster("c_gls_FCOVER300_201606100000_GLOBE_PROBAV_V1.0.1.nc")
+fcover17 <- raster("c_gls_FCOVER300_201705310000_GLOBE_PROBAV_V1.0.1.nc")
+fcover18 <- raster("c_gls_FCOVER300_201805310000_GLOBE_PROBAV_V1.0.1.nc")
+
