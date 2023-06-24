@@ -263,20 +263,24 @@ plot(fcover_can16, main = ("FCOVER in june 2016"))
 dev.off()
 
 
-p1 <- ggplot(data = oristano20) + 
-geom_raster (data = oristano20, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
-scale_fill_viridis() + ggtitle ("FCOVER summer 2020 ")
+p1 <- ggplot(data = fcover_can14) + 
+geom_raster (data = fcover_can14, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER June 2014 ")
 
 # ggplot 2021 data, assign it to the object p2
-p2 <- ggplot(data = oristano21) + 
-geom_raster (data = oristano21, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
-scale_fill_viridis() + ggtitle ("FCOVER summer 2021")
+p2 <- ggplot(data = fcover_can15) + 
+geom_raster (data = fcover_can15, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER June 2015")
+
+p3 <- ggplot(data = fcover_can16) + 
+geom_raster (data = fcover_can16, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER June 2016")
 
 # plot the 2 maps together into 2 rows and 1 column using Patchwork
-p1/p2
+p1/p2/p3
 
 # export this image in PNG format in the output folder
-png(file="outputs/FCOVER_Oristano_20-21.png", units="cm", width=25, height=30, res=600)
-p1 / p2
+png(file="outputs/FCOVER_CAN_14-25-16.png", units="cm", width=25, height=30, res=600)
+p1 / p2 / p3
 dev.off()
 
