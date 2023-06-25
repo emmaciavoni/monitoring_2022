@@ -136,8 +136,7 @@ library(viridis) # for the color palette
 library(ggplot2) # for graphics ggplot functions
 library(patchwork) # multiframe graphics
 library(gridExtra) # multiframe ggplot
-
-
+library(devtools)
 library(RStoolbox) # useful for remote sensing image processing. Non lo scarica nella versione 4.3.1 di R
 
 # recalling the working directory
@@ -241,10 +240,20 @@ extcan <- c(100, 110, 50, 60)
 fcover_can16 <- crop(fcover16, extcan)
 plot(fcover_can16)
 
-par(mfrow = c(1,3)) # 1 row, 3 columns
+extcan <- c(100, 110, 50, 60)
+fcover_can17 <- crop(fcover17, extcan)
+plot(fcover_can17)
+
+extcan <- c(100, 110, 50, 60)
+fcover_can18 <- crop(fcover18, extcan)
+plot(fcover_can18)
+
+par(mfrow = c(2,3)) # 2 rows, 2 columns
 plot(fcover_can14, main = ("FCOVER in june 2014"))
 plot(fcover_can15, main = ("FCOVER in june 2015"))
 plot(fcover_can16, main = ("FCOVER in june 2016"))
+plot(fcover_can17, main = ("FCOVER in june 2017"))
+plot(fcover_can18, main = ("FCOVER in june 2018"))
 dev.off()
 
 # salvo il plot nella cartella outputs
@@ -269,8 +278,16 @@ p3 <- ggplot(data = fcover_can16) +
 geom_raster (data = fcover_can16, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
 scale_fill_viridis() + ggtitle ("FCOVER June 2016")
 
+p4 <- ggplot(data = fcover_can17) +
+geom_raster (data = fcover_can17, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m)) + 
+scale_fill_viridis() + ggtitle ("FCOVER June 2017")
+
+p5 <- ggplot(data = fcover_can18) +
+geom_raster (data = fcover_can18, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m)) + 
+scale_fill_viridis() + ggtitle ("FCOVER June 2018")
+
 # plot the 2 maps together into 2 rows and 1 column using Patchwork
-p1/p2/p3
+p1/p2/p3/p4/p5
 
 # export this image in PNG format in the output folder
 png(file="outputs/FCOVER_CAN_14-25-16.png", units="cm", width=25, height=30, res=600)
