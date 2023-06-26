@@ -124,3 +124,10 @@ fcover_diff
 
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff3, col = coldiff)
+
+fcover_diff4 <- fcover_bc2021 - fcover_bc2020
+fcover_diff4
+
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff4, col = coldiff)
+## ci vediamo domani per capire come interpetare la differenza nella fcover e i colori ##
