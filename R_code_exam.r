@@ -1,35 +1,10 @@
-setwd("C:/Users/Emma/Desktop/lab/exam")
-library(ncdf4) 
-library(raster)
-library(viridis)
-library(RStoolbox) 
-library(ggplot2)
+### Hello! This is my code for the Monitoring Ecosystem exam ###
+# In this project I want to analyze the effects of wildfires that occurred in Canada in the summer of 2021
+# It was stated that the 2021 season became the third worst wildfire season on record, in terms of area burned 
 
-fire20210831 <- raster("c_gls_BA300_202108310000_GLOBE_S3_V1.2.1.nc")
-fire20210831
+# I start by analyzing the fraction of vegetation cover in the year 2020, 2021, and 2022 to see how the differences in the vegetation before, during, and after the fire events 
 
-plot(fire20210831)
+### FCOVER ANALYSIS ###
 
-cl <- colorRampPalette (c('red','orange','yellow'))(100)
-plot(fire20210831, col=cl)
+# recalling the libraries 
 
-
-rlist <- list.files (pattern="BA300")
-rlist
-
-
-list_rast <- lapply(rlist, raster)
-list_rast
-
-cl <- colorRampPalette (c('black','red','white'))(100)
-plot(fire20210831, col=cl)
-
-
-ggplot() +
-geom_raster(fire20210831, mapping = aes(x=x, y=y, fill=BA_DEKAD))
-
-
-ggplot() +
-geom_raster(fire20210831, mapping = aes(x=x, y=y, fill=BA_DEKAD)) +
-scale_fill_viridis(option="cividis") +
-ggtitle("cividis palette")
