@@ -73,4 +73,26 @@ plot(fcover_bc2022, main = ("FCOVER in July 2022"))
 dev.off()
 
 # the difference in fcover between 2020 and 2021 is quite evident
-# plot the two maps together with ggplot function
+# plot the two maps together with ggplot function using the viridis color scale that ranges from yellow to green and blue
+
+p1 <- ggplot(data = fcover_bc2020) + 
+geom_raster (data = fcover_bc2020, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER July 2020 ")
+
+p2 <- ggplot(data = fcover_bc2021) + 
+geom_raster (data = fcover_bc2021, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m)) +
+scale_fill_viridis() + ggtitle ("FCOVER July 2021")
+
+p1/p2
+dev.off()
+
+# export the image as PNG file in the outputs folder
+png(file="outputs/FCOVER_BC_20-21plot.png", units="cm", width=20, height= 30, res=600)
+p1/p2
+dev.off()
+
+# calculate the difference of fcover in 2020-2021
+fcover_diff <- fcover_bc2020 - fcover_bc2021
+fcover_diff
+
+# using 
