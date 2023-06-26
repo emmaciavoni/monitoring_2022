@@ -18,3 +18,6 @@ library(devtools) #  provides functions for package development, installation, a
 library(RStoolbox) # useful for remote sensing image processing
 
 # recalling the working directory
+
+setwd("C:/Users/Emma/Desktop/exam")
+
