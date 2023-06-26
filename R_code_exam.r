@@ -6,5 +6,15 @@
 
 ### FCOVER ANALYSIS ###
 
-# recalling the libraries 
+# recalling the libraries into R
 
+library(raster) # work with raster file
+library(ncdf4) # import the copernicus file in nc
+library(viridis) # for the color palette
+library(ggplot2) # for graphics ggplot functions
+library(patchwork) # multiframe graphics
+library(gridExtra) # multiframe ggplot
+library(devtools) #  provides functions for package development, installation, and management
+library(RStoolbox) # useful for remote sensing image processing
+
+# recalling the working directory
