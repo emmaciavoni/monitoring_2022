@@ -22,8 +22,26 @@ library(RStoolbox) # useful for remote sensing image processing
 setwd("C:/Users/Emma/Desktop/exam")
 
 # I downloaded these three files from Copernicus: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
-# c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1 July 2020
-# c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2 July 2021
-# c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2 July 2022
+# c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1 # from 21st to 31st July 2020 
+# c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2 # from 21st to 31st July 2021
+# c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2 # from 21st to 31st July 2022
 
 # I upload them into R through raster() function 
+july20 <- raster ("c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1.nc")
+july21 <- raster ("c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2.nc")
+july22 <- raster ("c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2.nc")
+
+# I plot them to see the images 
+plot(july20)
+dev.off()
+plot(july21)
+dev.off()
+plot(july22)
+dev.off()
+# they all represent the fcover at the global scale
+
+# through the crop() function I crop the extension of British Columbia region in Canada, since it was one of the most affected areas 
+# British Columbia coordinates 53,7267° N, 127,6476° W
+# longitude from 120 to 130 
+# latitude from 51 to 55
+
