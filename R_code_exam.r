@@ -101,3 +101,9 @@ fcover_diff2
 # using colorramppalette to customize the colors
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff, col = coldiff)
+
+compatible <- nrow(fcover_bc2020) == nrow(fcover_bc2021) &&
+              ncol(fcover_bc2020) == ncol(fcover_bc2021) &&
+              res(fcover_bc2020) == res(fcover_bc2021) &&
+              extent(fcover_bc2020) == extent(fcover_bc2021) &&
+              crs(fcover_bc2020) == crs(fcover_bc2021)
