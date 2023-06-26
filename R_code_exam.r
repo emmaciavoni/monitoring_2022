@@ -63,3 +63,14 @@ plot(fcover_bc2020, main = ("FCOVER in July 2020"))
 plot(fcover_bc2021, main = ("FCOVER in July 2021"))
 plot(fcover_bc2022, main = ("FCOVER in July 2022"))
 dev.off()
+
+# export the image as PNG file in the outputs folder 
+png(file="outputs/FCOVER_BC_plot.png", units="cm", width=20, height= 30, res=600) 
+par(mfrow = c(1,3)) # 1 row, 3 columns
+plot(fcover_bc2020, main = ("FCOVER in July 2020"))
+plot(fcover_bc2021, main = ("FCOVER in July 2021"))
+plot(fcover_bc2022, main = ("FCOVER in July 2022"))
+dev.off()
+
+# the difference in fcover between 2020 and 2021 is quite evident
+# plot the two maps together with ggplot function
