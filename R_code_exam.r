@@ -21,3 +21,9 @@ library(RStoolbox) # useful for remote sensing image processing
 
 setwd("C:/Users/Emma/Desktop/exam")
 
+# I downloaded these three files from Copernicus: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
+# c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1 July 2020
+# c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2 July 2021
+# c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2 July 2022
+
+# I upload them into R through raster() function 
