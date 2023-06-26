@@ -45,3 +45,21 @@ dev.off()
 # longitude from 120 to 130 
 # latitude from 51 to 55
 
+extBC <- c(125, 129, 51, 55) 
+fcover_bc2020 <- crop(july20, extBC)
+plot(fcover_bc2020)
+
+extBC <- c(125, 129, 51, 55)
+fcover_bc2021 <- crop(july21, extBC)
+plot(fcover_bc2021)
+
+extBC <- c(125, 129, 51, 55)
+fcover_bc2022 <- crop(july22, extBC)
+plot(fcover_bc2022)
+
+# plot the three maps together through the par() function
+par(mfrow = c(1, 3)) # 1 row, 3 columns
+plot(fcover_bc2020, main = ("FCOVER in July 2020"))
+plot(fcover_bc2021, main = ("FCOVER in July 2021"))
+plot(fcover_bc2022, main = ("FCOVER in July 2022"))
+dev.off()
