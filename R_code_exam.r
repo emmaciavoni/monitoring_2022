@@ -94,16 +94,27 @@ dev.off()
 # calculate the difference of fcover in 2020-2021
 fcover_diff <- fcover_bc2020 - fcover_bc2021
 fcover_diff
+##### se faccio il plot di questa esce fuori la mappa del 2021. ho controllato se fossero compatibili e dovrebbero esserlo. non capisco #####
 
 fcover_diff2 <- fcover_bc2022 - fcover_bc2021
 fcover_diff2
+##### qui invece un po' di differenza si vede, ma non so come interpetarlo #####
 
 # using colorramppalette to customize the colors
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff, col = coldiff)
 
-compatible <- nrow(fcover_bc2020) == nrow(fcover_bc2021) &&
-              ncol(fcover_bc2020) == ncol(fcover_bc2021) &&
-              res(fcover_bc2020) == res(fcover_bc2021) &&
-              extent(fcover_bc2020) == extent(fcover_bc2021) &&
-              crs(fcover_bc2020) == crs(fcover_bc2021)
+# difference between 2022 - 2021
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff2, col = coldiff)
+
+# export the images
+png(file="outputs/FCOVER_DIFF_21-20_plot.png", units="cm", width=20, height= 30, res=600)
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff, col = coldiff)
+dev.off()
+
+png(file="outputs/FCOVER_DIFF_22-21_plot.png", units="cm", width=20, height= 30, res=600)
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff2, col = coldiff)
+dev.off()
