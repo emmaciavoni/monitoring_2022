@@ -118,3 +118,9 @@ png(file="outputs/FCOVER_DIFF_22-21_plot.png", units="cm", width=20, height= 30,
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff2, col = coldiff)
 dev.off()
+
+fcover_diff3 <- fcover_bc2021 - fcover_bc2022
+fcover_diff
+
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff3, col = coldiff)
