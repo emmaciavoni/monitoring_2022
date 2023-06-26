@@ -95,4 +95,9 @@ dev.off()
 fcover_diff <- fcover_bc2020 - fcover_bc2021
 fcover_diff
 
-# using 
+fcover_diff2 <- fcover_bc2022 - fcover_bc2021
+fcover_diff2
+
+# using colorramppalette to customize the colors
+coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+plot(fcover_diff, col = coldiff)
