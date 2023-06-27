@@ -57,6 +57,24 @@ extBC <- c(125, 129, 51, 55)
 fcover_bc2022 <- crop(july22, extBC)
 plot(fcover_bc2022)
 
+# function lapply through which we can import multiple data with the same pattern
+# first of all, I create a list
+fcoverlist <- list.files(pattern = "FCOVER300")
+fcoverlist
+
+# create a raster file for all the images
+list_rast <- lapply(fcoverlist, raster)
+list_rast
+
+# create a stack for concatenating multiple vectors into a single one
+fcoverstack <- stack(list_rast)
+fcoverstack
+
+# recalling the coordinates of British Columbia to crop the stack
+extbc <- c(125, 129, 51, 55)
+fcoverbc <- crop(fcoverstack, extbc)
+fcoverbc
+
 # plot the three maps together through the par() function
 par(mfrow = c(1, 3)) # 1 row, 3 columns
 plot(fcover_bc2020, main = ("FCOVER in July 2020"))
@@ -133,4 +151,4 @@ fcover_diff4
 
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff4, col = coldiff)
-## ci vediamo domani per capire come interpetare la differenza nella fcover e i colori ##
+
