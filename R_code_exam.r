@@ -75,6 +75,10 @@ extbc <- c(125, 129, 51, 55)
 fcoverbc <- crop(fcoverstack, extbc)
 fcoverbc
 
+# change variables' names 
+names(fcoverstack) <- c(Fraction.of.green.Vegetation.Cover.333m.1, Fraction.of.green.Vegetation.Cover.333m.2, Fraction.of.green.Vegetation.Cover.333m.3)
+
+
 # plot the three maps together through the par() function
 par(mfrow = c(1, 3)) # 1 row, 3 columns
 plot(fcover_bc2020, main = ("FCOVER in July 2020"))
