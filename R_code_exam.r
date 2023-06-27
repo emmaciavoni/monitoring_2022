@@ -145,14 +145,32 @@ hist(fcover_bc$JUL_2020,
 hist(fcover_bc$JUL_2021, 
   xlab = "FCOVER values in 2021", 
   ylab = "frequency", 
-  xlim = c(0, 1), ylim = c(0, 20000))
+  xlim = c(0, 1), ylim = c(0, 20000)),
+dev.off()
+
+# 2021 vs 2022
+par(mfrow=c(1,2))
+hist(fcover_bc$JUL_2021,
+     xlab = "FCOVER values in 2021",
+     ylab = "frequency",
+     xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022,
+     xlab = "FCOVER values in 2021",
+     ylab = "frequency",
+     xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
 par(mfrow=c(1,2))
-hist(fcover_bc$JUL_2021,
+hist(fcover_bc$JUL_2020,
      xlab = "FCOVER values in 2020",
      ylab = "frequency",
-     xlim = c(0, 1), ylim = c(0, 2
+     xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022,
+     xlab = "FCOVER values in 2022",
+     ylab = "frequency",
+     xlim = c(0, 1), ylim = c(0, 20000))
+dev.off()
+
 # export as PNG
 png(file="outputs/FCOVER_frequencies_2020-2021.png", units="cm", width=40, height=40, res=600)
 par(mfrow=c(1,2))
@@ -161,7 +179,7 @@ hist(fcover_or$AUG_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xli
 dev.off()
 
 # make a scatterplot 
-plot(fcover_or$AUG_2020, fcover_or$AUG_2021, 
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, 
     pch =20, col = "blue", 
     xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
 dev.off()
@@ -172,7 +190,7 @@ plot(fcover_or$AUG_2020, fcover_or$AUG_2021, pch =20, col = "blue", xlab = "FCOV
 dev.off()
 
 # we can have the frequency and regression lines all together automatically with the function pairs()
-pairs(fcover_or)
+pairs(fcover_bc)
 
 
 
