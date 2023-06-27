@@ -76,8 +76,32 @@ fcoverbc <- crop(fcoverstack, extbc)
 fcoverbc
 
 # change variables' names 
-names(fcoverstack) <- c(Fraction.of.green.Vegetation.Cover.333m.1, Fraction.of.green.Vegetation.Cover.333m.2, Fraction.of.green.Vegetation.Cover.333m.3)
+names(fcoverstack) <- c("Fraction.of.green.Vegetation.Cover.333m.1", "Fraction.of.green.Vegetation.Cover.333m.2", "Fraction.of.green.Vegetation.Cover.333m.3")
 
+# let's separate the files and assign a name to each one
+fcover2020 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.3
+fcover2021 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.1
+fcover2022 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.2
+
+# converting raster into data frame
+fcover2020_df <- as.data.frame(fcover2020, xy=TRUE)
+fcover2021_df <- as.data.frame(fcover2021, xy=TRUE)
+fcover2022_df <- as.data.frame(fcover2022, xy=TRUE)
+
+# ggplot using viridis palette (colorblind friendly)
+par(mfrow = c(1,3))
+p1 <- ggplot() + 
+geom_raster (data = fcover2020_df, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333.3m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER in July 2020 ")
+p2 <- ggplot() + 
+geom_raster (data = fcover2021_df, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333.1m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER in July 2021 ")
+p3 <- ggplot() + 
+geom_raster (data = fcover2022_df, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333.2m )) + 
+scale_fill_viridis() + ggtitle ("FCOVER in July 2022 ")
+
+# plot them using grid.arrange function
+grid.arrange(p1, p2, p3, nrow=1)
 
 # plot the three maps together through the par() function
 par(mfrow = c(1, 3)) # 1 row, 3 columns
