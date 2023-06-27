@@ -57,42 +57,34 @@ extBC <- c(125, 129, 51, 55)
 fcover_bc2022 <- crop(july22, extBC)
 plot(fcover_bc2022)
 
-# function lapply through which we can import multiple data with the same pattern
-# first of all, I create a list
-fcoverlist <- list.files(pattern = "FCOVER300")
-fcoverlist
+# create a list 
+fcover_list <- list.files(pattern = "FCOVER300") 
 
-# create a raster file for all the images
-list_rast <- lapply(fcoverlist, raster)
-list_rast
+# apply raster function to all the files in the list 
+fcover_raster <- lapply(fcover_list, raster) 
 
-# create a stack for concatenating multiple vectors into a single one
-fcoverstack <- stack(list_rast)
-fcoverstack
+# make a stack with the raster
+# A RasterStack is a collection of RasterLayer objects with the same spatial extent and resolution
+fcover_stack <- stack(fcover_raster)
 
 # recalling the coordinates of British Columbia to crop the stack
 extbc <- c(125, 129, 51, 55)
-fcoverbc <- crop(fcoverstack, extbc)
-fcoverbc
+fcover_bc <- crop(fcover_stack, extbc)
+fcover_bc 
 
-# change variables' names 
-names(fcoverstack) <- c("Fraction.of.green.Vegetation.Cover.333m.1", "Fraction.of.green.Vegetation.Cover.333m.2", "Fraction.of.green.Vegetation.Cover.333m.3")
-
-# let's separate the files and assign a name to each one
-fcover2020 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.1
-fcover2021 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.2
-fcover2022 <- fcoverbc$Fraction.of.green.Vegetation.Cover.333m.3
+# rename the layers 
+names(fcover_bc) <- c("JUL_2021", "JUL_2022", "JUL_2020")
 
 
+# plot the stack with custom palette
+cl <- colorRampPalette (c("brown", "yellow", "#009900"))(100)
+plot(fcover_bc, col = cl, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
 
 
-
+cl <- colorRampPalette (c("#006a2e", "#d4ec62", "#e5ebbf"))(100)
 
 
 
-
-# plot them using grid.arrange function
-grid.arrange(p1, p2, p3, nrow=1)
 
 # plot the three maps together through the par() function
 par(mfrow = c(1, 3)) # 1 row, 3 columns
