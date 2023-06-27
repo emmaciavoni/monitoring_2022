@@ -136,7 +136,43 @@ green_palette <- colorRampPalette(c("lightgreen", "green", "darkgreen"))(100)
 plot(fcover_bc, col = green_palette, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
 dev.off()
 
+# plotting the frequency distribution of FCOVER values in 2020 and 2021 using histograms
+par(mfrow=c(1,2))
+hist(fcover_bc$JUL_2020,            
+  xlab = "FCOVER values in 2020", 
+  ylab = "frequency", 
+  xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, 
+  xlab = "FCOVER values in 2021", 
+  ylab = "frequency", 
+  xlim = c(0, 1), ylim = c(0, 20000))
+dev.off()
 
+par(mfrow=c(1,2))
+hist(fcover_bc$JUL_2021,
+     xlab = "FCOVER values in 2020",
+     ylab = "frequency",
+     xlim = c(0, 1), ylim = c(0, 2
+# export as PNG
+png(file="outputs/FCOVER_frequencies_2020-2021.png", units="cm", width=40, height=40, res=600)
+par(mfrow=c(1,2))
+hist(fcover_or$AUG_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_or$AUG_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+dev.off()
+
+# make a scatterplot 
+plot(fcover_or$AUG_2020, fcover_or$AUG_2021, 
+    pch =20, col = "blue", 
+    xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
+dev.off()
+
+#export as PNG
+png(file="outputs/FCOVER_scatterplot_2020-2021.png", units="cm", width=40, height=40, res=600)
+plot(fcover_or$AUG_2020, fcover_or$AUG_2021, pch =20, col = "blue", xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
+dev.off()
+
+# we can have the frequency and regression lines all together automatically with the function pairs()
+pairs(fcover_or)
 
 
 
