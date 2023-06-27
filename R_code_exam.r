@@ -21,22 +21,20 @@ library(RStoolbox) # useful for remote sensing image processing
 
 setwd("C:/Users/Emma/Desktop/exam")
 
-# I downloaded these three files from Copernicus: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
+# I downloaded these three files from Copernicus: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home in my directory
 # c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1 # from 21st to 31st July 2020 
 # c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2 # from 21st to 31st July 2021
 # c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2 # from 21st to 31st July 2022
 
+# First, I analyze the years 2020 and 2021
 # I upload them into R through raster() function 
 july20 <- raster ("c_gls_FCOVER300-RT6_202007310000_GLOBE_OLCI_V1.1.1.nc")
 july21 <- raster ("c_gls_FCOVER300-RT0_202107310000_GLOBE_OLCI_V1.1.2.nc")
-july22 <- raster ("c_gls_FCOVER300-RT0_202207310000_GLOBE_OLCI_V1.1.2.nc")
 
 # I plot them to see the images 
 plot(july20)
 dev.off()
 plot(july21)
-dev.off()
-plot(july22)
 dev.off()
 # they all represent the fcover at the global scale
 
@@ -53,64 +51,28 @@ extBC <- c(125, 129, 51, 55)
 fcover_bc2021 <- crop(july21, extBC)
 plot(fcover_bc2021)
 
-extBC <- c(125, 129, 51, 55)
-fcover_bc2022 <- crop(july22, extBC)
-plot(fcover_bc2022)
-
-# create a list 
-fcover_list <- list.files(pattern = "FCOVER300") 
-
-# apply raster function to all the files in the list 
-fcover_raster <- lapply(fcover_list, raster) 
-
-# make a stack with the raster
-# A RasterStack is a collection of RasterLayer objects with the same spatial extent and resolution
-fcover_stack <- stack(fcover_raster)
-
-# recalling the coordinates of British Columbia to crop the stack
-extbc <- c(125, 129, 51, 55)
-fcover_bc <- crop(fcover_stack, extbc)
-fcover_bc 
-
-# rename the layers 
-names(fcover_bc) <- c("JUL_2021", "JUL_2022", "JUL_2020")
-
-
-# plot the stack with custom palette
-cl <- colorRampPalette (c("brown", "yellow", "#009900"))(100)
-plot(fcover_bc, col = cl, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
-
-
-cl <- colorRampPalette (c("#006a2e", "#d4ec62", "#e5ebbf"))(100)
-
-
-
-
-# plot the three maps together through the par() function
-par(mfrow = c(1, 3)) # 1 row, 3 columns
+# plot the two maps together through the par() function
+par(mfrow = c(2, 2)) # 2 rows, 2 columns
 plot(fcover_bc2020, main = ("FCOVER in July 2020"))
 plot(fcover_bc2021, main = ("FCOVER in July 2021"))
-plot(fcover_bc2022, main = ("FCOVER in July 2022"))
 dev.off()
 
 # export the image as PNG file in the outputs folder 
 png(file="outputs/FCOVER_BC_plot.png", units="cm", width=20, height= 30, res=600) 
-par(mfrow = c(1,3)) # 1 row, 3 columns
+par(mfrow = c(2,2)) # 2 rows, 2 columns
 plot(fcover_bc2020, main = ("FCOVER in July 2020"))
 plot(fcover_bc2021, main = ("FCOVER in July 2021"))
-plot(fcover_bc2022, main = ("FCOVER in July 2022"))
 dev.off()
 
-# the difference in fcover between 2020 and 2021 is quite evident
 # plot the two maps together with ggplot function using the viridis color scale that ranges from yellow to green and blue
 
 p1 <- ggplot(data = fcover_bc2020) + 
 geom_raster (data = fcover_bc2020, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
-scale_fill_viridis() + ggtitle ("FCOVER July 2020 ")
+scale_fill_viridis() + ggtitle ("FCOVER in July 2020 ")
 
 p2 <- ggplot(data = fcover_bc2021) + 
 geom_raster (data = fcover_bc2021, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m)) +
-scale_fill_viridis() + ggtitle ("FCOVER July 2021")
+scale_fill_viridis() + ggtitle ("FCOVER in July 2021")
 
 p1/p2
 dev.off()
@@ -123,43 +85,67 @@ dev.off()
 # calculate the difference of fcover in 2020-2021
 fcover_diff <- fcover_bc2020 - fcover_bc2021
 fcover_diff
-##### se faccio il plot di questa esce fuori la mappa del 2021. ho controllato se fossero compatibili e dovrebbero esserlo. non capisco #####
-
-fcover_diff2 <- fcover_bc2022 - fcover_bc2021
-fcover_diff2
-##### qui invece un po' di differenza si vede, ma non so come interpetarlo #####
+############ se faccio il plot di questa esce fuori la mappa del 2021. ho controllato se fossero compatibili e dovrebbero esserlo. non capisco ###############
 
 # using colorramppalette to customize the colors
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff, col = coldiff)
-
-cols <- rev(c("#006a2e", "#d4ec62", "#e5ebbf"))
-color_diff <- colorRampPalette(cols)(100)
-
-# difference between 2022 - 2021
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
-plot(fcover_diff2, col = color_diff)
+dev.off()
 
 # export the images
-png(file="outputs/FCOVER_DIFF_21-20_plot.png", units="cm", width=20, height= 30, res=600)
+png(file="outputs/FCOVER_DIFF_20-21_plot.png", units="cm", width=20, height= 30, res=600)
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff, col = coldiff)
 dev.off()
 
-png(file="outputs/FCOVER_DIFF_22-21_plot.png", units="cm", width=20, height= 30, res=600)
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
-plot(fcover_diff2, col = coldiff)
-dev.off()
+# to costumize the color palette see this website https://gka.github.io/palettes/#/8|s|214b1e,4f7c10,e8dec1|ffffe0,ff005e,93003a|1|1
 
-fcover_diff3 <- fcover_bc2021 - fcover_bc2022
-fcover_diff
+# now I want to see how the situation was in 2022 (post-fire)
+# I upload the file through the lapply function
+# first let's create a list of the files with the common pattern
+fcover_list <- list.files(pattern = "FCOVER300") 
+fcover_list # to check it
 
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
-plot(fcover_diff3, col = coldiff)
+# let's apply raster function to all the files in the list 
+fcover_raster <- lapply(fcover_list, raster) 
+fcover_raster
 
-fcover_diff4 <- fcover_bc2021 - fcover_bc2020
-fcover_diff4
+# let's make a stack with the raster
+# A RasterStack is a collection of RasterLayer objects with the same spatial extent and resolution
+fcover_stack <- stack(fcover_raster)
+fcover_stack 
 
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
-plot(fcover_diff4, col = coldiff)
+# recalling the coordinates of British Columbia to crop the stack
+extbc <- c(125, 129, 51, 55)
+fcover_bc <- crop(fcover_stack, extbc)
+fcover_bc 
+
+# rename the layers 
+names(fcover_bc) <- c("JUL_2021", "JUL_2022", "JUL_2020")
+
+# plot the stack with custom palette
+cl <- colorRampPalette(c("yellow", "brown", "009900"))(100)
+plot(fcover_bc, col = cl, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
