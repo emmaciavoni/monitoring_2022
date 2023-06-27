@@ -104,9 +104,12 @@ fcover_diff2
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
 plot(fcover_diff, col = coldiff)
 
+cols <- rev(c("#006a2e", "#d4ec62", "#e5ebbf"))
+color_diff <- colorRampPalette(cols)(100)
+
 # difference between 2022 - 2021
 coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
-plot(fcover_diff2, col = coldiff)
+plot(fcover_diff2, col = color_diff)
 
 # export the images
 png(file="outputs/FCOVER_DIFF_21-20_plot.png", units="cm", width=20, height= 30, res=600)
