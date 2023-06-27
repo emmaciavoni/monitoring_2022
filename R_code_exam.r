@@ -145,21 +145,17 @@ hist(fcover_bc$JUL_2020,
 hist(fcover_bc$JUL_2021, 
   xlab = "FCOVER values in 2021", 
   ylab = "frequency", 
-  xlim = c(0, 1), ylim = c(0, 20000)),
+  xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
-# 2021 vs 2022
+# export as PNG in the outputs folder
+png(file="outputs/FCOVER_frequencies_2020-2021.png", units="cm", width=40, height=40, res=600)
 par(mfrow=c(1,2))
-hist(fcover_bc$JUL_2021,
-     xlab = "FCOVER values in 2021",
-     ylab = "frequency",
-     xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_bc$JUL_2022,
-     xlab = "FCOVER values in 2021",
-     ylab = "frequency",
-     xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
+# 2020 vs 2022
 par(mfrow=c(1,2))
 hist(fcover_bc$JUL_2020,
      xlab = "FCOVER values in 2020",
@@ -171,12 +167,13 @@ hist(fcover_bc$JUL_2022,
      xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
-# export as PNG
-png(file="outputs/FCOVER_frequencies_2020-2021.png", units="cm", width=40, height=40, res=600)
+# export as PNG in outputs folder
+png(file="outputs/FCOVER_frequencies_2020-2022.png", units="cm", width=40, height=40, res=600)
 par(mfrow=c(1,2))
-hist(fcover_or$AUG_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_or$AUG_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
+
 
 # make a scatterplot 
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, 
