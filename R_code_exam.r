@@ -124,10 +124,17 @@ fcover_bc
 names(fcover_bc) <- c("JUL_2021", "JUL_2022", "JUL_2020")
 
 # plot the stack with custom palette
-cl <- colorRampPalette(c("yellow", "brown", "009900"))(100)
-plot(fcover_bc, col = cl, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+green_palette <- colorRampPalette(c("lightgreen", "green", "darkgreen"))(100)
+plot(fcover_bc, col = green_palette, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+dev.off()
 
+# in 2022 the wildfire season was not as destructive as the previous year, some vegetation recovered from 2021
 
+# export the plots in the outputs folder
+png(file="outputs/FCOVER_20-21-22_plot.png", units="cm", width=20, height= 30, res=600)
+green_palette <- colorRampPalette(c("lightgreen", "green", "darkgreen"))(100)
+plot(fcover_bc, col = green_palette, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+dev.off()
 
 
 
