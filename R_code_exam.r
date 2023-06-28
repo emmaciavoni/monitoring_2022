@@ -213,7 +213,38 @@ png(file="outputs/FCOVER_pairs.png",units="cm", width=40, height=40, res=600)
 pairs(fcover_bc)
 dev.off()
 
+# unsupervised classification procedure of the images
+# use unsuperClass function
+l1992c <- unsuperClass(l1992, nClasses=2)
+l1992c
 
+# plot of the map
+plot(l1992c$map)
+# values in the map are only 1 and 2 
+# value 1= forests
+# value 2= agricultural areas
+# percentage of forest and agricultural areas? 
+# let's count the amount of pixels through "freq" function
+
+freq(l1992c$map)
+# for the first value (forest) 305923
+# for the second value (agricultural areas) 35369
+
+total <- 341292
+propagri <- 35369/total
+propforest <- 305923/total 
+
+# agriculture and water = 0.1036327 ~ 0.10
+# forests = 0.8963673 ~ 0,90 
+
+# build a dataframe
+cover <- c("Forest", "Agriculture") 
+prop1992 <- c(0.8963673, 0.1036327)
+proportion1992 <- data.frame(cover, prop1992)
+
+library(ggplot2)
+
+ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
 
 
 
