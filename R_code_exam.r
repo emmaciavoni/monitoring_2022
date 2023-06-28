@@ -275,7 +275,27 @@ proportion <- data.frame(cover, prop1992, prop2006)
 ggplot(proportion2006, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
 
+aug20 <- unsuperClass(oristano20, nClasses=2)
+aug20     
+#see the details -> we have only 2 classes now 
+# class 2: low vegetation cover 
+# class 1: high vegetation cover
+plot(aug20$map)
 
+aug21 <- unsuperClass(oristano21, nClasses=2)
+aug21
+plot(aug21$map)
+
+# we can plot the unsupervised classification together with the original map to visualise the correspondance of 
+  # part of the burned area with the #2 value 
+  # the vegetation with the #1 value
+
+par(mfrow=c(2,2)) # 2 rows and 2 columns
+plot(aug20$map, main = "August 2020")
+plot(oristano20, col = cl, main = "FCover August 2020")
+plot(aug21$map, main = "August 2021")
+plot(oristano21, col = cl, main = "FCover August 2021")
+dev.off()
 
 
 
