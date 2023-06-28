@@ -213,6 +213,9 @@ png(file="outputs/FCOVER_pairs.png",units="cm", width=40, height=40, res=600)
 pairs(fcover_bc)
 dev.off()
 
+
+
+### quantitative estimate land cover ###
 # unsupervised classification procedure of the images
 # use unsuperClass function
 l1992c <- unsuperClass(l1992, nClasses=2)
