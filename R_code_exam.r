@@ -174,26 +174,44 @@ hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xli
 hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 20000))
-abline(0,1,col="red")
-
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 20000))
+# make a scatterplot
+par(mfrow=c(1,2))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 1))
+abline(0,1,col="red") 
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
 abline(0,1, col="red")
+dev.off()
 
-# make a scatterplot 
+# export as PNG in the outputs folder 
+png(file="outputs/FCOVER_scatterplot_2020-2021vs2020-2022.png",units="cm", width=40, height=40, res=600)
+par(mfrow=c(1,2))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 1))
+abline(0,1,col="red") 
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
+abline(0,1, col="red")
+dev.off()
+
+# another way to write the code for the scatterplot
+par(mfrow=c(1,2))
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, 
-    pch =20, col = "blue", 
+    pch =20, col = "black", 
     xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
+# add abline
+abline(a = 0, b = 1, col = "red") # a = 0 represents the intercept of the abline (y-axis value when x = 0); b = = 1 represents the slope of the abline (change in y divided by the change in x)
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022,
+     pch = 20, col = "black",
+     xlab = "FCOVER in 2020", ylab = "FCOVER in 2022")
+# add abline
+abline(a = 0, b = 1, col = "red")
 dev.off()
 
-#export as PNG
-png(file="outputs/FCOVER_scatterplot_2020-2021.png", units="cm", width=40, height=40, res=600)
-plot(fcover_or$AUG_2020, fcover_or$AUG_2021, pch =20, col = "blue", xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
-dev.off()
-
-# we can have the frequency and regression lines all together automatically with the function pairs()
+# we can have the frequency and regression lines all together automatically with the function pairs(), getting as a result 3 histograms and 3 scatterplots
 pairs(fcover_bc)
 
+# save it  as PNG
+png(file="outputs/FCOVER_pairs.png",units="cm", width=40, height=40, res=600)
+pairs(fcover_bc)
+dev.off()
 
 
 
