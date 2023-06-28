@@ -242,10 +242,37 @@ cover <- c("Forest", "Agriculture")
 prop1992 <- c(0.8963673, 0.1036327)
 proportion1992 <- data.frame(cover, prop1992)
 
-library(ggplot2)
-
 ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
 
+# classification of 2006
+# unsuperClass function 
+l2006c <- unsuperClass(l2006, nClasses=2) 
+l2006c
+
+plot(l2006c$map)
+# forest value 1
+# agricultural areas value 2
+
+freq(l2006c$map)
+
+# proportions
+
+total <- 342726
+propforest2006 <- 178620/total
+propagri2006 <- 164106/total
+
+# propforest 0.5211743
+# propagri 0.4788257
+
+cover <- c("Forest", "Agriculture")
+prop1992 <- c(propforest, propagri)
+prop2006 <- c(propforest2006, propagri2006)
+
+proportion2006 <- data.frame(cover, prop2006)
+
+proportion <- data.frame(cover, prop1992, prop2006)
+
+ggplot(proportion2006, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
 
 
