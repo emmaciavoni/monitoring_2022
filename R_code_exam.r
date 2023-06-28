@@ -297,6 +297,41 @@ plot(aug21$map, main = "August 2021")
 plot(oristano21, col = cl, main = "FCover August 2021")
 dev.off()
 
+# measure of the percentage of vegetation and burned area (number of pixels)
+# calculate the frequencies of our map for august 2020
+
+freq(aug20$map)
+aug20       # observe ncell to have the total number of pixels
+
+#class 1 = 54975       # high vegetation land
+#class 2 = 21619       # low vegetation land
+# NA = 24878     # the sea
+# total = ncell-NA = 101472 - 24878 = 76594
+
+total2020 <- 76594 #the total amount of pixels
+
+# compute percentage of land with different vegetation cover
+
+propburned20 <- 21619/total2020  # class 2
+propveg20 <- 54975/total2020     # class 1
+
+propburned20
+# 0.2822545 --> 28%         # class 2 -> % of low vegtation
+propveg20
+# 0.7177455 --> 72%         # class 1 -> % of high vegetation
+
+# building a dataframe with type of cover and proportion of pixels
+cover <- c("Vegetation", "No vegetation")
+prop2020 <- c(0.7177455, 0.2822545)
+proportion2020 <- data.frame(cover, prop2020) # proportion of pixels in 2020
+proportion2020 # quantitative data
+
+# plotting data with ggplot2
+# ggplot function -> first argument = dataset, other arguments = aesthetic, color stored in cover
+# geom_bar function explainig type of graph -> barplot
+# stat - statistics used, identity bc we're using data as they are (no median or mean)
+
+ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
 
 
 
