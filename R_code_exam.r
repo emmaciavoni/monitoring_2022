@@ -174,6 +174,11 @@ hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xli
 hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 20000))
+abline(0,1,col="red")
+
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 20000))
+abline(0,1, col="red")
 
 # make a scatterplot 
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, 
