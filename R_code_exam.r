@@ -215,13 +215,32 @@ dev.off()
 
 
 
-### quantitative estimate land cover ###
+### Quantitative estimate land cover ###
 # I use the unsuperClass function
 jul2020 <- unsuperClass(fcover_bc2020, nClasses=2)
 jul2020
 
 plot(jul2020$map)
+# the values in the map are 1 and 2
+# value 1 = high fcover
+# value 2 = low fcover (burned area)
 
+# what is the percentage of fcover and burned area?
+# I have to count the amount of pixels through freq() function
+freq(jul2020$map)
+# value 1 = 458134
+# value 2 = 1143336
+# NA = 204866
+# total = ncell - NA =  777.336- 204866 = 572.470
+
+total <- 572.470
+propburned <- 1143336/total
+propburned 
+# value 2: 0,1997240030045243 ~ 0,2 ---> 20% low fcover
+
+propfcover <- 458134/total
+propfcover
+# value 1: 0,8002759969954757 ~ 0,80 ---> 80% high fcover
 
 
 l1992c <- unsuperClass(l1992, nClasses=2)
