@@ -216,8 +216,14 @@ dev.off()
 
 
 ### quantitative estimate land cover ###
-# unsupervised classification procedure of the images
-# use unsuperClass function
+# I use the unsuperClass function
+jul2020 <- unsuperClass(fcover_bc2020, nClasses=2)
+jul2020
+
+plot(jul2020$map)
+
+
+
 l1992c <- unsuperClass(l1992, nClasses=2)
 l1992c
 
