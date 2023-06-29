@@ -251,6 +251,7 @@ proportion2020 <- data.frame(cover, prop2020)
 ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
 
+# export as PNG
 png(file="outputs/FCOVER20_freqggplot.png",units="cm", width=40, height=40, res=600)
 ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
@@ -270,155 +271,73 @@ freq(jul2021$map)
 # value 1 = 418084
 # value 2 = 284816
 # NA =  1103436
-# total = ncell - NA = 1.806.336 - 1103436 = 702900
+# total = ncell - NA = 1806336 - 1103436 = 702900
 
-total <- 702900
+total21 <- 702900
 propburned21 <- 284816/total
 propburned21
-# value 2: 0,4052013088632807 ~ 0,4 ---> 40%
+# value 2: 0.4052013088632807 ~ 0,4 ---> 40%
 
 propfcover21 <- 418084/total
 propfcover21
-# value 1: 0,5947986911367193 ~ 0,6 ---> 60%
+# value 1: 0.5947986911367193 ~ 0,6 ---> 60%
 
- 
-par(mfrow=c(2,2)) # 2 rows and 2 columns
-plot(aug20$map, main = "August 2020")
-plot(oristano20, col = cl, main = "FCover August 2020")
-plot(aug21$map, main = "August 2021")
-plot(oristano21, col = cl, main = "FCover August 2021")
+### why is the percentage of fcover higher in 2021 too? ###
+
+# build a dataframe
+cover <- c("Fcover21", "Burned areas21")
+prop2021 <- c(0.5947986, 0.4052013)
+proportion2021 <- data.frame(cover, prop2021)
+
+# ggplot
+ggplot(proportion2021, aes(x=cover, y=prop2021, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
 
+# export as PNG
+png(file="outputs/FCOVER21_freqggplot.png",units="cm", width=40, height=40, res=600)
+ggplot(proportion2021, aes(x=cover, y=prop2021, color=cover)) + geom_bar(stat="identity", fill="white")
+dev.off()
+
+# we can plot the unsupervised classification together with the original map to visualise the correspondance of 
+# part of the burned area with the #2 value 
+# the vegetation with the #1 value
+cl <- colorRampPalette(c("brown", "yellow", "darkgreen"))(100)
 par(mfrow=c(2,2))
 plot(jul2020$map, main = "July 2020")
 plot(fcover_bc2020, col = cl, main = "Fcover July 2020")
 plot(jul2021$map, main = "July 2021")
 plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
-
-
-
-
-
-
-
-
-l1992c <- unsuperClass(l1992, nClasses=2)
-l1992c
-
-# plot of the map
-plot(l1992c$map)
-# values in the map are only 1 and 2 
-# value 1= forests
-# value 2= agricultural areas
-# percentage of forest and agricultural areas? 
-# let's count the amount of pixels through "freq" function
-
-freq(l1992c$map)
-# for the first value (forest) 305923
-# for the second value (agricultural areas) 35369
-
-total <- 341292
-propagri <- 35369/total
-propforest <- 305923/total 
-
-# agriculture and water = 0.1036327 ~ 0.10
-# forests = 0.8963673 ~ 0,90 
-
-# build a dataframe
-cover <- c("Forest", "Agriculture") 
-prop1992 <- c(0.8963673, 0.1036327)
-proportion1992 <- data.frame(cover, prop1992)
-
-ggplot(proportion1992, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
-
-# classification of 2006
-# unsuperClass function 
-l2006c <- unsuperClass(l2006, nClasses=2) 
-l2006c
-
-plot(l2006c$map)
-# forest value 1
-# agricultural areas value 2
-
-freq(l2006c$map)
-
-# proportions
-
-total <- 342726
-propforest2006 <- 178620/total
-propagri2006 <- 164106/total
-
-# propforest 0.5211743
-# propagri 0.4788257
-
-cover <- c("Forest", "Agriculture")
-prop1992 <- c(propforest, propagri)
-prop2006 <- c(propforest2006, propagri2006)
-
-proportion2006 <- data.frame(cover, prop2006)
-
-proportion <- data.frame(cover, prop1992, prop2006)
-
-ggplot(proportion2006, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
-
-
-aug20 <- unsuperClass(oristano20, nClasses=2)
-aug20     
-#see the details -> we have only 2 classes now 
-# class 2: low vegetation cover 
-# class 1: high vegetation cover
-plot(aug20$map)
-
-aug21 <- unsuperClass(oristano21, nClasses=2)
-aug21
-plot(aug21$map)
-
-# we can plot the unsupervised classification together with the original map to visualise the correspondance of 
-  # part of the burned area with the #2 value 
-  # the vegetation with the #1 value
-
-par(mfrow=c(2,2)) # 2 rows and 2 columns
-plot(aug20$map, main = "August 2020")
-plot(oristano20, col = cl, main = "FCover August 2020")
-plot(aug21$map, main = "August 2021")
-plot(oristano21, col = cl, main = "FCover August 2021")
 dev.off()
 
-# measure of the percentage of vegetation and burned area (number of pixels)
-# calculate the frequencies of our map for august 2020
+png(file="outputs/FC_comparison.png",units="cm", width=40, height=40, res=600)
+par(mfrow=c(2,2))
+plot(jul2020$map, main = "July 2020")
+plot(fcover_bc2020, col = cl, main = "Fcover July 2020")
+plot(jul2021$map, main = "July 2021")
+plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
+dev.off()
 
-freq(aug20$map)
-aug20       # observe ncell to have the total number of pixels
+### THE END ###
 
-#class 1 = 54975       # high vegetation land
-#class 2 = 21619       # low vegetation land
-# NA = 24878     # the sea
-# total = ncell-NA = 101472 - 24878 = 76594
 
-total2020 <- 76594 #the total amount of pixels
 
-# compute percentage of land with different vegetation cover
 
-propburned20 <- 21619/total2020  # class 2
-propveg20 <- 54975/total2020     # class 1
 
-propburned20
-# 0.2822545 --> 28%         # class 2 -> % of low vegtation
-propveg20
-# 0.7177455 --> 72%         # class 1 -> % of high vegetation
 
-# building a dataframe with type of cover and proportion of pixels
-cover <- c("Vegetation", "No vegetation")
-prop2020 <- c(0.7177455, 0.2822545)
-proportion2020 <- data.frame(cover, prop2020) # proportion of pixels in 2020
-proportion2020 # quantitative data
 
-# plotting data with ggplot2
-# ggplot function -> first argument = dataset, other arguments = aesthetic, color stored in cover
-# geom_bar function explainig type of graph -> barplot
-# stat - statistics used, identity bc we're using data as they are (no median or mean)
 
-ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
