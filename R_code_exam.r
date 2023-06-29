@@ -231,9 +231,9 @@ freq(jul2020$map)
 # value 1 = 458134
 # value 2 = 1143336
 # NA = 204866
-# total = ncell - NA =  777.336- 204866 = 572.470
+# total = ncell - NA =  777336- 204866 = 572470
 
-total <- 572.470
+total <- 572470
 propburned <- 1143336/total
 propburned 
 # value 2: 0,1997240030045243 ~ 0,2 ---> 20% low fcover
@@ -255,9 +255,53 @@ png(file="outputs/FCOVER20_freqggplot.png",units="cm", width=40, height=40, res=
 ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
        
+# same thing for 2021
+# unsuperClass 
+jul2021 <- unsuperClass(fcover_bc2021, nClass=2)
+jul2021
+       
+# plot the map
+plot(jul2021$map)
+# value 1 = high fcover
+# value 2 = low fcover
 
-       
-       
+# compute frequencies
+freq(jul2021$map)
+# value 1 = 418084
+# value 2 = 284816
+# NA =  1103436
+# total = ncell - NA = 1.806.336 - 1103436 = 702900
+
+total <- 702900
+propburned21 <- 284816/total
+propburned21
+# value 2: 0,4052013088632807 ~ 0,4 ---> 40%
+
+propfcover21 <- 418084/total
+propfcover21
+# value 1: 0,5947986911367193 ~ 0,6 ---> 60%
+
+ 
+par(mfrow=c(2,2)) # 2 rows and 2 columns
+plot(aug20$map, main = "August 2020")
+plot(oristano20, col = cl, main = "FCover August 2020")
+plot(aug21$map, main = "August 2021")
+plot(oristano21, col = cl, main = "FCover August 2021")
+dev.off()
+
+par(mfrow=c(2,2))
+plot(jul2020$map, main = "July 2020")
+plot(fcover_bc2020, col = cl, main = "Fcover July 2020")
+plot(jul2021$map, main = "July 2021")
+plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
+
+
+
+
+
+
+
+
 l1992c <- unsuperClass(l1992, nClasses=2)
 l1992c
 
