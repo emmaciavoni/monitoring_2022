@@ -242,7 +242,22 @@ propfcover <- 458134/total
 propfcover
 # value 1: 0,8002759969954757 ~ 0,80 ---> 80% high fcover
 
+# build a data frame 
+cover <- c("Fcover", "Burned areas")
+prop2020 <- c(0.8002759, 0.1997240)
+proportion2020 <- data.frame(cover, prop2020) 
 
+# build ggplot
+ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
+dev.off()
+
+png(file="outputs/FCOVER20_freqggplot.png",units="cm", width=40, height=40, res=600)
+ggplot(proportion2020, aes(x=cover, y=prop2020, color=cover)) + geom_bar(stat="identity", fill="white")
+dev.off()
+       
+
+       
+       
 l1992c <- unsuperClass(l1992, nClasses=2)
 l1992c
 
