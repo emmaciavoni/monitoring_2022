@@ -318,36 +318,3 @@ plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
 dev.off()
 
 ### THE END ###
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
