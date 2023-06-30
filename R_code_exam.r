@@ -64,7 +64,7 @@ plot(fcover_bc2020, main = ("FCOVER in July 2020"))
 plot(fcover_bc2021, main = ("FCOVER in July 2021"))
 dev.off()
 
-# plot the two maps together with ggplot function using the viridis color scale that ranges from yellow to green and blue
+# plot the two maps together with ggplot function using the viridis color scale (from yellow to green and blue) which is colorblind friendly
 
 p1 <- ggplot(data = fcover_bc2020) + 
 geom_raster (data = fcover_bc2020, mapping = aes(x=x, y=y, fill = Fraction.of.green.Vegetation.Cover.333m )) + 
