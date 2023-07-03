@@ -298,9 +298,7 @@ png(file="outputs/FCOVER21_freqggplot.png",units="cm", width=40, height=40, res=
 ggplot(proportion2021, aes(x=cover, y=prop2021, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
 
-# we can plot the unsupervised classification together with the original map to visualise the correspondance of 
-# part of the burned area with the #2 value 
-# the vegetation with the #1 value
+# we can plot the unsupervised classification together with the original map to visualise the correspondance of part of the burned area with the #2 value and the vegetation with the #1 value
 cl <- colorRampPalette(c("brown", "yellow", "darkgreen"))(100)
 par(mfrow=c(2,2))
 plot(jul2020$map, main = "July 2020")
