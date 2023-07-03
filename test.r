@@ -1,5 +1,5 @@
-# prova per capire delle cose
-# dovrei inserire la working directory e poi inserire le library che mi servono
+# test
+# setting the wd and recall the libraries
 setwd("C:/Users/Emma/Desktop/exam/")
 library(raster) # predictors
 library(rgdal) # species
@@ -20,52 +20,48 @@ fire_archive <- st_read("fire_archive_M-C61_358736.shp")
 
 shp = readOGR(dsn = ".", layer = "fire_archive_M-C61_358736")
 
-# non funziona niente, ciao
-# end of fucking day 1
+# doesn't work
 
 
-############# day2 ################
-# let's try again with baby steps
+#############################
+
 # I have to analyze the vegetation density and extent so do a pre-fire mapping
 
-# provo a importare dei dati in csv delle date degli incendi
+# trying to import csv files
 # csv 
 my_csv_file <-"fire_mapping.csv"
 my_df2 <- read.csv(file = my_csv_file, header = TRUE, sep = ";" stringsAsFactors = FALSE)
 head(my_df2)
 
-# ovviamente non funziona 
+# error
 
-# provo a prendere i dati da coprenicus che forse è l'unico sito affidabile che non ti dà i dati in formati strani
-# ho creato un nuovo folder quindi metto la nuova wd (sperando che funzioni,lol)
+# download data from Copernicus 
 
-
-############ analisi della fraction of vegetation cover ############
+############ fraction of vegetation cover analysis Attica wildfires (Greece) ############
 # FCOVER = fraction of ground covered by green vegetation. Practically, it quantifies the spatial extent of the vegetation.
 # using copernicus data: FCOVER 300m V1 - Sentinel-3/OLCI, PROBA-V
 
-# checkng how the fcover changed from 2017 to 2019, so before the fires and after the fires
+# checking how the fcover changed from 2017 to 2019, so before the fires and after the fires
 
-# ho cambiato zona perché su Copernicus non c'erano dati prima del 2020
-# quindi sto analizzando gli incendi del Canada di quest'anno 
-# prima però ho scaricato i dati della FCOVER nel giugno 2022 (01 - 11 giugno)
-# provo ad importarlo su R 
-# pray for me 
+# changed area, couldn't find data before 2020 for Attica zone
+# downloaded FCOVER in the year 2022 (01st - 11th June)
+# imported into R
+# pray for me
 
 june2022 <- raster ("c_gls_FCOVER300-RT1_202206100000_GLOBE_OLCI_V1.1.2.nc") 
 
-# vediamo com'è l'immagine importata su R facendo un plot
+# let's plot it
 plot(june2022) 
 dev.off()
 
-# ok, ha funzionato e vediamo il plot a livello globale
-# adesso mi serve vedere la situazione in Canada e devo usare la funzione "crop()"
-# ora il quesito è: mi conviene croppare tutto il Canada o solo la regione che mi interessa?
-# a questo quesito risponderò domani, che oggi è stata una giornata faticosa 
+# it's working! :)
+# crop the extension of Canada through the "crop()" function
+
+ 
 
 ###### day 3 #######
 
-# scaricare FCOVER di giugno 2023 (01 - 11 giugno) 
+# download FCOVER June 2023 (01st - 11th June) 
 
 # ho scaricato questi due file da copernicus 
 # c_gls_FCOVER300-RT1_202206100000_GLOBE_OLCI_V1.1.2.nc june 2022
@@ -85,8 +81,6 @@ extBC <- c(125, 129, 51, 55)
 fcover_bc2023 <- crop(june2023, extBC)
 plot(fcover_bc2023)
 
-# hanno funzionato ma non so bene come interpetarle 
-# sicuramente nel 2022 c'era più verde, nel 2023 mancano dei pezzi. Detta proprio in gergo 
 
 # I want to plot the two maps  together 
 # I use the par() function 
@@ -96,37 +90,25 @@ plot(fcover_bc2022, main = ("FCOVER in june 2022"))
 plot(fcover_bc2023, main = ("FCOVER in june 2023"))
 dev.off()
 
-# si vedono ma male, è un formato strano
-# devo verificare se ho sbagliato qualcosa nelle coordinate 
-
-# provo comunque a caricare l'immagine, giusto per impostare la funzione
 # export in PNG format in the output folder
 png(file="outputs/FCOVER_BC_22-23_plot.png", units="cm", width=20, height= 30, res=600) 
 par(mfrow = c(2,1)) # 2 rows, 1 column
 plot(fcover_bc2022, main = ("FCOVER in june 2022"))
 plot(fcover_bc2023, main = ("FCOVER in june 2023"))
 dev.off()
-# questo passaggio non mi è riuscito. ho salvato l'immagine dei plot "manualmente", ma dovrei farlo con la funzione png()
+# questo passaggio non mi è riuscito
 # inoltre, qui mi dava errore per il plot del 2022, per simbolo in atteso
 # ho risolto l'errore: su R non avevo chiuso le virgolette su "cm"
-
 
 
 # prima però uso il package viridis per cambiare i colori 
 # the Viridis package is colorblind firendly
 
 
-### oggi è stata una giornata complicata e mi sono bloccata
-### devo capire cosa mi conviene fare e partire da lì 
-### l'ultima idea è la seguente: prendere i dati del mese di giugno negli ultimi 9 anni (2014-2023) e valutare la fcover e l'ndvi
-### domani comincio con il prendere i dati del fcover e vediamo come va
 
 
-
-
-
-################# DATA DI OGGI 22/06/2023 ########################
-#### bonjour, comincio a prendere i dati della fcover dal 2014 al 2023 ####
+################# day 4 another test ########################
+#### download fcover data from 2014 to 2023 ####
 # https://land.copernicus.vgt.vito.be/PDF/portal/Application.html#Home
 
 # recalling the libraries into R 
@@ -137,13 +119,13 @@ library(ggplot2) # for graphics ggplot functions
 library(patchwork) # multiframe graphics
 library(gridExtra) # multiframe ggplot
 library(devtools)
-library(RStoolbox) # useful for remote sensing image processing. Non lo scarica nella versione 4.3.1 di R
+library(RStoolbox) # useful for remote sensing image processing. It does not work in the latest version of R (4.3.1)
 
 # recalling the working directory
 
 setwd("C:/Users/Emma/Desktop/exam")
 
-# uploading the images as a list on r through list and lapply functions 
+# uploading the images as a list in R through list and lapply functions 
 
 fcover14 <- raster("c_gls_FCOVER300_201406100000_GLOBE_PROBAV_V1.0.1.nc")
 fcover15 <- raster("c_gls_FCOVER300_201506100000_GLOBE_PROBAV_V1.0.1.nc")
@@ -190,10 +172,7 @@ fcover_stack
 ## domani provo a fare lo stack solo degli ultimi tre file e vedo se funziona ##
 
 
-
-
-
-#### provo a fare una cosa visto che non funziona la stack function e mi voglio sparare ####
+#### provo a fare una cosa visto che non funziona la stack function ####
 setwd("C:/Users/Emma/Desktop/test")
 
 fcoverlist <- list.files (pattern = "FCOVER300")
