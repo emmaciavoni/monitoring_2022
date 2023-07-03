@@ -197,7 +197,7 @@ plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021,
     pch =20, col = "black", 
     xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
 # add abline
-abline(a = 0, b = 1, col = "red") # a = 0 represents the intercept of the abline (y-axis value when x = 0); b = = 1 represents the slope of the abline (change in y divided by the change in x)
+abline(a = 0, b = 1, col = "red") # a = 0 represents the intercept of the abline (y-axis value when x = 0); b = 1 represents the slope of the abline (change in y divided by the change in x)
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022,
      pch = 20, col = "black",
      xlab = "FCOVER in 2020", ylab = "FCOVER in 2022")
