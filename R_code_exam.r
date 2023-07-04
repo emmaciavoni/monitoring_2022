@@ -181,6 +181,27 @@ hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xli
 hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
+##
+
+## prova ####
+par(mfrow=c(3,3))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
+plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
+
+png(file="outputs/FCOVER_histandscatterplot.png", units="cm", width=40, height=40, res=600)
+par(mfrow=c(3,3))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
+plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
+dev.off()
+
 # make a scatterplot
 par(mfrow=c(1,2))
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 1))
