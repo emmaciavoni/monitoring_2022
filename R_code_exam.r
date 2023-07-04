@@ -6,8 +6,18 @@
 
 ### FCOVER ANALYSIS ###
 
-# recalling the libraries into R
 
+import.packages("raster")
+import.packages("ncdf4")
+import.packages("viridis")
+import.packages("ggplot2")
+import.packages("patchwork")
+import.packages("gridExtra")
+
+import.packages("devtools")
+import.packages("RStoolbox")
+
+# recalling the libraries into R
 library(raster) # work with raster file
 library(ncdf4) # import the copernicus file in nc
 library(viridis) # for the color palette
@@ -17,7 +27,7 @@ library(gridExtra) # multiframe ggplot
 library(devtools) #  provides functions for package development, installation, and management
 library(RStoolbox) # useful for remote sensing image processing
 
-# recalling the working directory
+# setting the working directory
 
 setwd("C:/Users/Emma/Desktop/exam")
 
@@ -85,20 +95,17 @@ dev.off()
 # calculate the difference of fcover in 2020-2021
 fcover_diff <- fcover_bc2020 - fcover_bc2021
 fcover_diff
-############ se faccio il plot di questa esce fuori la mappa del 2021. ho controllato se fossero compatibili e dovrebbero esserlo. non capisco ###############
 
 # using colorramppalette to customize the colors
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+coldiff <- colorRampPalette(c("red", "yellow", "green"))(100)
 plot(fcover_diff, col = coldiff)
 dev.off()
 
 # export the images
 png(file="outputs/FCOVER_DIFF_20-21_plot.png", units="cm", width=20, height= 30, res=600)
-coldiff <- colorRampPalette(c("green", "yellow", "red"))(100)
+coldiff <- colorRampPalette(c("red", "yellow", "green"))(100)
 plot(fcover_diff, col = coldiff)
 dev.off()
-
-# to costumize the color palette see this website https://gka.github.io/palettes/#/8|s|214b1e,4f7c10,e8dec1|ffffe0,ff005e,93003a|1|1
 
 # now I want to see how the situation was in 2022 (post-fire)
 # I upload the file through the lapply function
