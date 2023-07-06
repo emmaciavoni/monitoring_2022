@@ -14,7 +14,9 @@ import.packages("ggplot2")
 import.packages("patchwork")
 import.packages("gridExtra")
 
+# RStool package is not availabe for the latest R version (4.3.1)
 # importing RStool package in this way because it was not available on CRAN
+# https://www.rdocumentation.org/packages/RStoolbox/versions/0.3.0 # rdocumentation
 install.packages(devtools)
 library(devtools)
 install_github("bleutner/RStoolbox")
