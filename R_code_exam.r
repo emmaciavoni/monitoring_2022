@@ -1,4 +1,4 @@
-### Hello! This is my code for the Monitoring Ecosystem exam ###
+### Hello! This is my code for the Monitoring Ecosystem Changes and Functioning exam ###
 # In this project I want to analyze the effects of wildfires that occurred in Canada in the summer of 2021
 # It was stated that the 2021 season became the third worst wildfire season on record, in terms of area burned 
 
@@ -135,16 +135,16 @@ fcover_bc
 names(fcover_bc) <- c("JUL_2021", "JUL_2022", "JUL_2020")
 
 # plot the stack with custom palette
-green_palette <- colorRampPalette(c("lightgreen", "green", "darkgreen"))(100)
-plot(fcover_bc, col = green_palette, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+cust_pal <- colorRampPalette(c("yellow", "green", "blue"))(100) 
+plot(fcover_bc, col = cust_pal, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
 dev.off()
 
-# in 2022 the wildfire season was not as destructive as the previous year, some vegetation recovered from 2021
+# in 2022 the wildfire season was not as destructive as the previous year
 
 # export the plots in the outputs folder
 png(file="outputs/FCOVER_20-21-22_plot.png", units="cm", width=20, height= 30, res=600)
-green_palette <- colorRampPalette(c("lightgreen", "green", "darkgreen"))(100)
-plot(fcover_bc, col = green_palette, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
+cust_pal <- colorRampPalette(c("yellow", "green", "blue"))(100)
+plot(fcover_bc, col = cust_pal, main = c("JUL 2021", "JUL 2022", "JUL 2020"))
 dev.off()
 
 # plotting the frequency distribution of FCOVER values in 2020 and 2021 using histograms
@@ -185,27 +185,6 @@ hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xli
 hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
 dev.off()
 
-##
-
-## prova ####
-par(mfrow=c(3,3))
-hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
-plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
-
-png(file="outputs/FCOVER_histandscatterplot.png", units="cm", width=40, height=40, res=600)
-par(mfrow=c(3,3))
-hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
-plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
-dev.off()
-
 # make a scatterplot
 par(mfrow=c(1,2))
 plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0, 1), ylim=c(0, 1))
@@ -223,31 +202,30 @@ plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
 abline(0,1, col="red")
 dev.off()
 
-# another way to write the code for the scatterplot
-par(mfrow=c(1,2))
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, 
-    pch =20, col = "black", 
-    xlab = "FCOVER in 2020", ylab = "FCOVER in 2021")
-# add abline
-abline(a = 0, b = 1, col = "red") # a = 0 represents the intercept of the abline (y-axis value when x = 0); b = 1 represents the slope of the abline (change in y divided by the change in x)
-plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022,
-     pch = 20, col = "black",
-     xlab = "FCOVER in 2020", ylab = "FCOVER in 2022")
-# add abline
-abline(a = 0, b = 1, col = "red")
+# plot the histograms and scatterplots together with par ()
+par(mfrow=c(3,3))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
+plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
 dev.off()
 
-# we can have the frequency and regression lines all together automatically with the function pairs(), getting as a result 3 histograms and 3 scatterplots
-pairs(fcover_bc)
-
-# save it  as PNG
-png(file="outputs/FCOVER_pairs.png",units="cm", width=40, height=40, res=600)
-pairs(fcover_bc)
+# export it as PNG in the outputs folder
+png(file="outputs/FCOVER_histandscatterplot.png", units="cm", width=40, height=40, res=600)
+par(mfrow=c(3,3))
+hist(fcover_bc$JUL_2020, xlab = "FCOVER values in 2020", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2021, xlab = "FCOVER values in 2021", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+hist(fcover_bc$JUL_2022, xlab = "FCOVER values in 2022", ylab = "frequency", xlim = c(0, 1), ylim = c(0, 20000))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2021, xlim=c(0,1), ylim=c(0,1))
+plot(fcover_bc$JUL_2020, fcover_bc$JUL_2022, xlim=c(0, 1), ylim=c(0, 1))
+plot(fcover_bc$JUL_2021, fcover_bc$JUL_2022, xlim=c(0,1), ylim=c(0,1))
 dev.off()
-
 
 
 ### Quantitative estimate land cover ###
+# before and during the fire season: 2020 vs 2021
 # I use the unsuperClass function
 jul2020 <- unsuperClass(fcover_bc2020, nClasses=2)
 jul2020
@@ -258,7 +236,7 @@ plot(jul2020$map)
 # value 2 = low fcover (burned area)
 
 # what is the percentage of fcover and burned area?
-# I have to count the amount of pixels through freq() function
+# I have to count the number of pixels through freq() function
 freq(jul2020$map)
 # value 1 = 458134
 # value 2 = 1143336
@@ -330,21 +308,4 @@ png(file="outputs/FCOVER21_freqggplot.png",units="cm", width=40, height=40, res=
 ggplot(proportion2021, aes(x=cover, y=prop2021, color=cover)) + geom_bar(stat="identity", fill="white")
 dev.off()
 
-# we can plot the unsupervised classification together with the original map to visualise the correspondance of part of the burned area with the #2 value and the vegetation with the #1 value
-cl <- colorRampPalette(c("brown", "yellow", "darkgreen"))(100)
-par(mfrow=c(2,2))
-plot(jul2020$map, main = "July 2020")
-plot(fcover_bc2020, col = cl, main = "Fcover July 2020")
-plot(jul2021$map, main = "July 2021")
-plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
-dev.off()
-
-png(file="outputs/FC_comparison.png",units="cm", width=40, height=40, res=600)
-par(mfrow=c(2,2))
-plot(jul2020$map, main = "July 2020")
-plot(fcover_bc2020, col = cl, main = "Fcover July 2020")
-plot(jul2021$map, main = "July 2021")
-plot(fcover_bc2021, col = cl, main = "Fcover July 2021")
-dev.off()
-
-### THE END ###
+### THE END :) ###
