@@ -14,8 +14,9 @@ import.packages("ggplot2")
 import.packages("patchwork")
 import.packages("gridExtra")
 
-import.packages("devtools")
-import.packages("RStoolbox")
+install.packages(devtools)
+library(devtools)
+install_github("bleutner/RStoolbox")
 
 # recalling the libraries into R
 library(raster) # work with raster file
