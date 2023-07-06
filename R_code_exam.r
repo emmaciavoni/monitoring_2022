@@ -14,6 +14,7 @@ import.packages("ggplot2")
 import.packages("patchwork")
 import.packages("gridExtra")
 
+# importing RStool package in this way because it was not available on CRAN
 install.packages(devtools)
 library(devtools)
 install_github("bleutner/RStoolbox")
